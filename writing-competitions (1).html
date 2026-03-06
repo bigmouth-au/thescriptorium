@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Scriptorium — Writing Competitions Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f8f8f6;
+  --surface: #ffffff;
+  --surface2: #f2f2ef;
+  --border: #e4e4e0;
+  --border-strong: #c8c8c2;
+  --text: #1c1c1a;
+  --text-2: #5a5a55;
+  --text-3: #9a9a94;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #eff6ff;
+  --green: #16a34a;
+  --green-light: #f0fdf4;
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+  --red: #dc2626;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.1), 0 12px 32px rgba(0,0,0,0.08);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- BROADCAST BANNER ---- */
+#broadcast-banner {
+  background: var(--accent);
+  color: white;
+  padding: 0.65rem 3rem 0.65rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  min-height: 44px;
+  position: relative;
+}
+
+#broadcast-banner.hidden { display: none; }
+
+.banner-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.banner-text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.banner-text a {
+  color: white;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.banner-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.25rem 0.4rem;
+  transition: color 0.15s;
+  border-radius: 4px;
+}
+
+.banner-close:hover { color: white; background: rgba(255,255,255,0.1); }
+
+/* ---- NAV ---- */
+.site-nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.site-nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  margin-right: 2.5rem;
+  padding: 1rem 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-brand em { font-style: italic; color: var(--accent); }
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 1.1rem 1rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.nav-link:hover { color: var(--text); }
+.nav-link.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ---- SECTIONS ---- */
+.section { display: none; }
+.section.active { display: block; }
+
+/* ---- HEADER ---- */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 2rem 2.5rem;
+}
+
+.site-header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.site-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.875rem;
+}
+
+.site-header h1 em { font-style: italic; color: var(--accent); }
+
+.site-header .tagline {
+  font-size: 1rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  max-width: 580px;
+}
+
+.header-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.stat { display: flex; flex-direction: column; gap: 0.2rem; }
+
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---- CONTROLS ---- */
+.controls-wrap {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 53px;
+  z-index: 100;
+}
+
+.controls {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.875rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.controls-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.15rem;
+  white-space: nowrap;
+}
+
+select {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.45rem 2rem 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a55'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+}
+
+select:hover { border-color: var(--border-strong); }
+select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+.search-wrap {
+  flex: 1;
+  min-width: 180px;
+  max-width: 260px;
+  position: relative;
+  margin-left: auto;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-3);
+  pointer-events: none;
+  display: flex;
+}
+
+.search-wrap input {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.45rem 0.75rem 0.45rem 2.25rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all 0.15s;
+}
+
+.search-wrap input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.search-wrap input::placeholder { color: var(--text-3); }
+
+/* ---- RESULTS BAR ---- */
+.results-bar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.results-count {
+  font-size: 0.8125rem;
+  color: var(--text-3);
+}
+
+.results-count strong { color: var(--text); font-weight: 600; }
+
+/* ---- GRID ---- */
+.grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1rem;
+}
+
+/* ---- CARD ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.card.hidden { display: none; }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.prestige-high::before { background: var(--text); }
+.prestige-mid::before { background: var(--accent); }
+.prestige-low::before { background: var(--border-strong); }
+
+.card-header { margin-bottom: 0.875rem; }
+
+.card-meta-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.625rem;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.badge-country { background: var(--surface2); color: var(--text-2); border: 1px solid var(--border); }
+.badge-intl { background: var(--green-light); color: var(--green); border: 1px solid #bbf7d0; }
+.badge-no-intl { background: var(--surface2); color: var(--text-3); border: 1px solid var(--border); }
+.badge-prestige-high { background: var(--text); color: white; }
+.badge-prestige-mid { background: var(--accent-light); color: var(--accent); border: 1px solid #bfdbfe; }
+.badge-prestige-low { background: var(--surface2); color: var(--text-3); border: 1px solid var(--border); }
+
+.card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.card-org {
+  font-size: 0.78rem;
+  color: var(--text-3);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  flex: 1;
+}
+
+.card-desc {
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+
+.card-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.type-chip {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.22rem 0.65rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-2);
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.875rem;
+}
+
+.detail-item { display: flex; flex-direction: column; gap: 0.2rem; }
+
+.detail-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.detail-val { font-size: 0.84rem; font-weight: 500; color: var(--text); }
+.detail-val.prize { color: var(--green); font-weight: 600; }
+.detail-val.free { color: var(--green); font-weight: 600; }
+
+.restrictions { display: flex; gap: 0.375rem; flex-wrap: wrap; align-items: center; }
+
+.restriction-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.restriction-tag.age { background: var(--amber-light); color: var(--amber); }
+.restriction-tag.gender { background: var(--green-light); color: var(--green); }
+.restriction-tag.open { color: var(--text-3); }
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--border);
+  gap: 0.5rem;
+}
+
+.deadline-chip { font-size: 0.78rem; color: var(--text-3); }
+
+.card-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.card-link:hover { color: var(--accent-hover); }
+
+/* ---- EMPTY STATE ---- */
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 5rem 2rem;
+  text-align: center;
+  display: none;
+}
+
+.empty-state.visible { display: block; }
+
+.empty-state p {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--text-3);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state small { font-size: 0.8rem; color: var(--text-3); }
+
+/* ---- BROADCAST SECTION ---- */
+.broadcast-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.broadcast-intro h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.broadcast-intro h2 em { font-style: italic; color: var(--accent); }
+
+.broadcast-intro p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-2);
+  margin-bottom: 1rem;
+}
+
+.broadcast-examples {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.example-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.example-item::before {
+  content: '→';
+  color: var(--accent);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.broadcast-note {
+  margin-top: 1.75rem;
+  font-size: 0.8rem;
+  color: var(--text-3);
+  line-height: 1.75;
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+}
+
+/* ---- FORM ---- */
+.broadcast-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+}
+
+.form-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.form-subtitle { font-size: 0.8rem; color: var(--text-3); margin-bottom: 2rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-group label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+.form-group .required { color: var(--red); margin-left: 0.15rem; }
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.6rem 0.875rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all 0.15s;
+  width: 100%;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  background: var(--surface);
+}
+
+.form-group textarea { min-height: 130px; resize: vertical; line-height: 1.6; }
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a55'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-color: var(--bg);
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.form-hint { font-size: 0.75rem; color: var(--text-3); }
+
+.form-submit {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 0.5rem;
+}
+
+.form-submit:hover { background: var(--accent-hover); }
+.form-submit:disabled { background: var(--text-3); cursor: not-allowed; }
+
+.form-success { display: none; text-align: center; padding: 3rem 1rem; }
+.form-success.visible { display: block; }
+.form-success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+.form-success h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-success p { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--text);
+  color: rgba(255,255,255,0.45);
+  padding: 2rem;
+  text-align: center;
+}
+
+footer p { font-size: 0.8rem; line-height: 1.8; }
+footer a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
+footer a:hover { color: white; }
+.divider { display: inline-block; margin: 0 0.5rem; opacity: 0.3; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .broadcast-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+  .controls { padding: 0.75rem 1rem; }
+  .grid { padding: 1rem 1rem 4rem; grid-template-columns: 1fr; gap: 0.75rem; }
+  .site-header { padding: 2rem 1rem 1.75rem; }
+  .results-bar { padding: 0.875rem 1rem 0; }
+  .broadcast-wrap { padding: 2rem 1rem; }
+  .broadcast-form { padding: 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .site-nav-inner { padding: 0 1rem; overflow-x: auto; }
+  .nav-brand { margin-right: 1.25rem; font-size: 1rem; }
+  .nav-link { padding: 1rem 0.75rem; font-size: 0.8125rem; }
+  .search-wrap { max-width: 100%; min-width: 140px; }
+  .header-stats { gap: 1.5rem; }
+  .banner-label { display: none; }
+  #broadcast-banner { padding: 0.65rem 2.5rem 0.65rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- BROADCAST BANNER -->
+<div id="broadcast-banner">
+  <span class="banner-label">Notice</span>
+  <span class="banner-text" id="banner-text">
+    🏆 <strong>Bridport Prize 2026</strong> — entries open now for Short Story, Poetry, Flash Fiction &amp; Novel Award. Deadline 31 May. <a href="https://bridportprize.org.uk" target="_blank" rel="noopener">Enter here →</a>
+  </span>
+  <button class="banner-close" onclick="document.getElementById('broadcast-banner').classList.add('hidden')" aria-label="Dismiss">×</button>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="#" class="nav-brand" onclick="showSection('directory',null);return false;">The <em>Scriptorium</em></a>
+    <a href="#" class="nav-link active" onclick="showSection('directory',this);return false;">Competition Directory</a>
+    <a href="#" class="nav-link" onclick="showSection('broadcast',this);return false;">Broadcast to Writers</a>
+  </div>
+</nav>
+
+<!-- DIRECTORY SECTION -->
+<div id="section-directory" class="section active">
+
+  <div class="site-header">
+    <div class="site-header-inner">
+      <div class="header-eyebrow">Global Directory · Est. 2026</div>
+      <h1>Writing <em>Competitions</em></h1>
+      <p class="tagline">A curated directory of reputable creative writing competitions across Australia, New Zealand, the UK, Ireland, the USA and Canada.</p>
+      <div class="header-stats">
+        <div class="stat">
+          <span class="stat-num" id="total-count">—</span>
+          <span class="stat-label">Competitions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="stat-countries">—</span>
+          <span class="stat-label">Countries</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="stat-intl">—</span>
+          <span class="stat-label">Accept International</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="stat-free">—</span>
+          <span class="stat-label">Free to Enter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls-wrap">
+    <div class="controls">
+      <span class="controls-label">Sort</span>
+      <select id="sort-by">
+        <option value="">Sort by…</option>
+        <option value="prestige-high">Prestige: High → Low</option>
+        <option value="prestige-low">Prestige: Low → High</option>
+        <option value="prize-high">Prize: High → Low</option>
+        <option value="prize-low">Prize: Low → High</option>
+        <option value="fee-low">Entry Fee: Low → High</option>
+        <option value="fee-high">Entry Fee: High → Low</option>
+        <option value="deadline-asc">Closes: Soonest First</option>
+        <option value="deadline-desc">Closes: Latest First</option>
+        <option value="name">Name A–Z</option>
+      </select>
+
+      <span class="controls-label">Filter</span>
+
+      <select id="filter-country">
+        <option value="">All Countries</option>
+        <option value="UK">🇬🇧 United Kingdom</option>
+        <option value="USA">🇺🇸 United States</option>
+        <option value="Australia">🇦🇺 Australia</option>
+        <option value="Canada">🇨🇦 Canada</option>
+        <option value="Ireland">🇮🇪 Ireland</option>
+        <option value="New Zealand">🇳🇿 New Zealand</option>
+        <option value="International">🌐 International</option>
+      </select>
+
+      <select id="filter-intl">
+        <option value="">International Entries</option>
+        <option value="yes">✓ Accepts International</option>
+        <option value="no">✗ Domestic Only</option>
+      </select>
+
+      <select id="filter-prestige">
+        <option value="">All Prestige</option>
+        <option value="high">High Prestige</option>
+        <option value="mid">Mid Prestige</option>
+        <option value="low">Emerging</option>
+      </select>
+
+      <select id="filter-type">
+        <option value="">All Entry Types</option>
+        <option value="novel">Complete Novel</option>
+        <option value="novel-extract">Novel Extract</option>
+        <option value="short-story">Short Story</option>
+        <option value="flash">Flash Fiction</option>
+        <option value="poetry">Poetry</option>
+      </select>
+
+      <select id="filter-fee">
+        <option value="">Any Fee</option>
+        <option value="free">Free Entry</option>
+        <option value="low">Low (under £15)</option>
+        <option value="mid">Mid (£15–£30)</option>
+        <option value="high">High (£30+)</option>
+      </select>
+
+      <select id="filter-age">
+        <option value="">Any Age</option>
+        <option value="open">Open to All Ages</option>
+        <option value="restricted">Age Restricted</option>
+      </select>
+
+      <select id="filter-gender">
+        <option value="">Any Gender</option>
+        <option value="open">Open to All</option>
+        <option value="restricted">Gender Restricted</option>
+      </select>
+
+      <select id="filter-month">
+        <option value="">Any Closing Month</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+        <option value="rolling">Rolling / Varies</option>
+      </select>
+
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </span>
+        <input type="text" id="search" placeholder="Search competitions…">
+      </div>
+    </div>
+  </div>
+
+  <div class="results-bar">
+    <div class="results-count">Showing <strong id="shown-count">—</strong> competitions</div>
+  </div>
+
+  <div class="grid" id="grid">
+    <div class="empty-state" id="empty">
+      <p>No competitions found.</p>
+      <small>Try adjusting your filters or search terms.</small>
+    </div>
+  </div>
+
+</div><!-- /section-directory -->
+
+<!-- BROADCAST SECTION -->
+<div id="section-broadcast" class="section">
+  <div class="broadcast-wrap">
+    <div class="broadcast-intro">
+      <h2>Reach <em>emerging writers</em> worldwide</h2>
+      <p>The Scriptorium is read by writers from across Australia, New Zealand, the UK, Ireland, the USA and Canada who are actively seeking competitions, workshops, and opportunities.</p>
+      <p>Use this form to put your message in front of them. We accept both paid advertising and free community notices at our discretion.</p>
+      <div class="broadcast-examples">
+        <div class="example-item">Writing workshops, retreats, and residencies</div>
+        <div class="example-item">MFA and creative writing programme announcements</div>
+        <div class="example-item">Literary magazine calls for submissions</div>
+        <div class="example-item">Agent and publisher open submission windows</div>
+        <div class="example-item">Writing tools, software, and editorial services</div>
+        <div class="example-item">Book launches and author events</div>
+      </div>
+      <div class="broadcast-note">
+        All submissions are reviewed within 3–5 business days.<br>
+        We reserve the right to decline any submission without explanation.<br>
+        Paid placements are clearly labelled as advertising.
+      </div>
+    </div>
+
+    <div class="broadcast-form">
+      <div class="form-title">Submit your message</div>
+      <div class="form-subtitle">Broadcast to writers worldwide</div>
+
+      <form id="broadcast-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name <span class="required">*</span></label>
+            <input type="text" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label>Organisation</label>
+            <input type="text" name="organisation" placeholder="Publisher, festival, university…">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Telephone</label>
+            <input type="tel" name="telephone" placeholder="+61 400 000 000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Website</label>
+          <input type="url" name="website" placeholder="https://yourwebsite.com">
+        </div>
+
+        <div class="form-group">
+          <label>Type of submission <span class="required">*</span></label>
+          <select name="submission_type" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="Paid Advertisement">Paid Advertisement</option>
+            <option value="Community Notice">Community Notice (free)</option>
+            <option value="Not sure">Not sure — please advise</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Message or Advertisement <span class="required">*</span></label>
+          <textarea name="message" placeholder="Describe what you'd like to share with our readers. Include relevant dates, links, pricing, and a clear call to action." required></textarea>
+          <span class="form-hint">Max 500 words. We may edit for length and clarity.</span>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_subject" value="New Scriptorium Broadcast Submission">
+
+        <button type="submit" class="form-submit" id="form-submit-btn">Send Submission →</button>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="form-success-icon">✓</div>
+        <h3>Submission received</h3>
+        <p>Thank you. We'll review your message and be in touch within 3–5 business days.</p>
+      </div>
+    </div>
+  </div>
+</div><!-- /section-broadcast -->
+
+<footer>
+  <p>
+    The Scriptorium — Creative Writing Competitions Directory
+    <span class="divider">|</span>
+    Data current as of March 2026
+    <span class="divider">|</span>
+    Always verify details on official competition websites before submitting
+  </p>
+  <p style="margin-top:0.4rem;">Data sourced from <a href="https://bridportprize.org.uk" target="_blank">bridportprize.org.uk</a>, <a href="https://thebookerprizes.com" target="_blank">thebookerprizes.com</a>, and other official sources.</p>
+</footer>
+
+<script>
+function updateHeaderStats(competitions) {
+  document.getElementById('total-count').textContent = competitions.length;
+  document.getElementById('stat-countries').textContent = new Set(competitions.map(c => c.country)).size;
+  document.getElementById('stat-intl').textContent = competitions.filter(c => c.international).length;
+  document.getElementById('stat-free').textContent = competitions.filter(c => c.entryFeeSort === 0).length;
+}
+
+function createCard(comp) {
+  const prestigeLabel = { high: 'High Prestige', mid: 'Mid Prestige', low: 'Emerging' };
+  const typeLabels = { 'novel': 'Complete Novel', 'novel-extract': 'Novel Extract', 'short-story': 'Short Story', 'flash': 'Flash Fiction', 'poetry': 'Poetry' };
+  const flagMap = { UK: '🇬🇧', USA: '🇺🇸', Australia: '🇦🇺', Canada: '🇨🇦', Ireland: '🇮🇪', 'New Zealand': '🇳🇿', International: '🌐' };
+
+  const feeDisplay = comp.entryFeeSort === 0
+    ? `<span class="detail-val free">Free</span>`
+    : `<span class="detail-val">${comp.entryFeeNote}</span>`;
+
+  const ageTag = comp.ageRestriction
+    ? `<span class="restriction-tag age">Age: ${comp.ageRestriction}</span>`
+    : `<span class="restriction-tag open">Any age</span>`;
+
+  const genderTag = comp.genderRestriction
+    ? `<span class="restriction-tag gender">${comp.genderRestriction}</span>`
+    : `<span class="restriction-tag open">Any gender</span>`;
+
+  const intlBadge = comp.international
+    ? `<span class="badge badge-intl">✓ International</span>`
+    : `<span class="badge badge-no-intl">Domestic Only</span>`;
+
+  return `
+    <div class="card prestige-${comp.prestige}"
+      data-country="${comp.country}"
+      data-international="${comp.international}"
+      data-prestige="${comp.prestige}"
+      data-types="${comp.types.join(',')}"
+      data-fee="${comp.entryFeeSort}"
+      data-prize="${comp.prizeSort}"
+      data-age="${comp.ageRestriction ? 'restricted' : 'open'}"
+      data-gender="${comp.genderRestriction ? 'restricted' : 'open'}"
+      data-name="${comp.name.toLowerCase()}"
+      data-desc="${comp.description.toLowerCase()}"
+      data-deadline-month="${comp.deadlineMonth}">
+      <div class="card-header">
+        <div class="card-meta-top">
+          <span class="badge badge-country">${flagMap[comp.country] || ''} ${comp.country}</span>
+          ${intlBadge}
+          <span class="badge badge-prestige-${comp.prestige}">${prestigeLabel[comp.prestige]}</span>
+        </div>
+        <div class="card-title">${comp.name}</div>
+        <div class="card-org">${comp.org}</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">${comp.description}</p>
+        <div class="card-types">
+          ${comp.types.map(t => `<span class="type-chip">${typeLabels[t]}</span>`).join('')}
+        </div>
+        <div class="card-details">
+          <div class="detail-item">
+            <span class="detail-label">Entry Fee</span>
+            ${feeDisplay}
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Top Prize</span>
+            <span class="detail-val prize">${comp.prize}</span>
+          </div>
+          <div class="detail-item" style="grid-column:1/-1">
+            <span class="detail-label">Restrictions</span>
+            <div class="restrictions">${ageTag}${genderTag}</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="deadline-chip">Closes: ${comp.deadline}</span>
+        <a class="card-link" href="${comp.url}" target="_blank" rel="noopener">Visit site →</a>
+      </div>
+    </div>`;
+}
+
+function filterAndSort(competitions) {
+  const sortBy = document.getElementById('sort-by').value;
+  const country = document.getElementById('filter-country').value;
+  const intl = document.getElementById('filter-intl').value;
+  const prestige = document.getElementById('filter-prestige').value;
+  const type = document.getElementById('filter-type').value;
+  const fee = document.getElementById('filter-fee').value;
+  const age = document.getElementById('filter-age').value;
+  const gender = document.getElementById('filter-gender').value;
+  const month = document.getElementById('filter-month').value;
+  const search = document.getElementById('search').value.toLowerCase().trim();
+
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const cards = Array.from(grid.querySelectorAll('.card'));
+
+  let visible = cards.filter(card => {
+    if (country && card.dataset.country !== country) return false;
+    if (intl === 'yes' && card.dataset.international !== 'true') return false;
+    if (intl === 'no' && card.dataset.international !== 'false') return false;
+    if (prestige && card.dataset.prestige !== prestige) return false;
+    if (type && !card.dataset.types.split(',').includes(type)) return false;
+    if (age && card.dataset.age !== age) return false;
+    if (gender && card.dataset.gender !== gender) return false;
+    if (month) {
+      const dm = parseInt(card.dataset.deadlineMonth);
+      if (month === 'rolling' && dm !== 0) return false;
+      if (month !== 'rolling' && dm !== parseInt(month)) return false;
+    }
+    if (fee) {
+      const f = parseInt(card.dataset.fee);
+      if (fee === 'free' && f !== 0) return false;
+      if (fee === 'low' && (f === 0 || f >= 15)) return false;
+      if (fee === 'mid' && (f < 15 || f > 30)) return false;
+      if (fee === 'high' && f <= 30) return false;
+    }
+    if (search && !card.dataset.name.includes(search) && !card.dataset.desc.includes(search)) return false;
+    return true;
+  });
+
+  if (sortBy) {
+    const po = { high: 0, mid: 1, low: 2 };
+    visible.sort((a, b) => {
+      switch (sortBy) {
+        case 'prestige-high': return po[a.dataset.prestige] - po[b.dataset.prestige];
+        case 'prestige-low': return po[b.dataset.prestige] - po[a.dataset.prestige];
+        case 'prize-high': return parseInt(b.dataset.prize) - parseInt(a.dataset.prize);
+        case 'prize-low': return parseInt(a.dataset.prize) - parseInt(b.dataset.prize);
+        case 'fee-low': return parseInt(a.dataset.fee) - parseInt(b.dataset.fee);
+        case 'fee-high': return parseInt(b.dataset.fee) - parseInt(a.dataset.fee);
+        case 'name': return a.dataset.name.localeCompare(b.dataset.name);
+        case 'deadline-asc': {
+          const am = parseInt(a.dataset.deadlineMonth), bm = parseInt(b.dataset.deadlineMonth);
+          if (am === 0 && bm === 0) return 0; if (am === 0) return 1; if (bm === 0) return -1;
+          return am - bm;
+        }
+        case 'deadline-desc': {
+          const am = parseInt(a.dataset.deadlineMonth), bm = parseInt(b.dataset.deadlineMonth);
+          if (am === 0 && bm === 0) return 0; if (am === 0) return 1; if (bm === 0) return -1;
+          return bm - am;
+        }
+        default: return 0;
+      }
+    });
+  }
+
+  cards.forEach(c => c.classList.add('hidden'));
+  visible.forEach(c => { c.classList.remove('hidden'); grid.appendChild(c); });
+  document.getElementById('shown-count').textContent = visible.length;
+  empty.classList.toggle('visible', visible.length === 0);
+}
+
+function showSection(name, linkEl) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  if (linkEl) linkEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('broadcast-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('form-submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      this.style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
+    } else {
+      btn.disabled = false; btn.textContent = 'Send Submission →';
+      alert('Something went wrong. Please try again.');
+    }
+  } catch {
+    btn.disabled = false; btn.textContent = 'Send Submission →';
+    alert('Could not connect. Please check your connection and try again.');
+  }
+});
+
+fetch('competitions.json')
+  .then(r => r.json())
+  .then(competitions => {
+    const grid = document.getElementById('grid');
+    competitions.forEach(c => grid.insertAdjacentHTML('beforeend', createCard(c)));
+    updateHeaderStats(competitions);
+    ['sort-by','filter-country','filter-intl','filter-prestige','filter-type',
+     'filter-fee','filter-age','filter-gender','filter-month'].forEach(id => {
+      document.getElementById(id).addEventListener('change', () => filterAndSort(competitions));
+    });
+    document.getElementById('search').addEventListener('input', () => filterAndSort(competitions));
+  })
+  .catch(() => {
+    document.getElementById('grid').insertAdjacentHTML('beforeend',
+      '<div style="grid-column:1/-1;padding:3rem;text-align:center;color:#dc2626;font-size:0.875rem;">⚠ Could not load competitions.json — make sure both files are in the same folder.</div>'
+    );
+  });
+</script>
+</body>
+</html>
