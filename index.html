@@ -9,22 +9,22 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f8f8f6;
+  --bg: #fdf8f7;
   --surface: #ffffff;
-  --surface2: #f2f2ef;
-  --border: #e4e4e0;
-  --border-strong: #c8c8c2;
-  --text: #1c1c1a;
-  --text-2: #5a5a55;
-  --text-3: #9a9a94;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --accent-light: #eff6ff;
-  --green: #16a34a;
-  --green-light: #f0fdf4;
-  --amber: #d97706;
-  --amber-light: #fffbeb;
-  --red: #dc2626;
+  --surface2: #f7f0ef;
+  --border: #ecddd9;
+  --border-strong: #d4b8b3;
+  --text: #2a1f1d;
+  --text-2: #6b514d;
+  --text-3: #a8908c;
+  --accent: #a05a6a;
+  --accent-hover: #7e4253;
+  --accent-light: #fdf0f2;
+  --green: #5a7a65;
+  --green-light: #eef4f0;
+  --amber: #9a6040;
+  --amber-light: #fdf3ed;
+  --red: #a05a6a;
   --radius: 10px;
   --radius-sm: 6px;
   --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
@@ -264,7 +264,7 @@ select {
 }
 
 select:hover { border-color: var(--border-strong); }
-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(160,90,106,0.12); }
 
 .search-wrap {
   flex: 1;
@@ -297,7 +297,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   transition: all 0.15s;
 }
 
-.search-wrap input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.search-wrap input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(160,90,106,0.12); }
 .search-wrap input::placeholder { color: var(--text-3); }
 
 /* ---- RESULTS BAR ---- */
@@ -379,7 +379,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 .badge-intl { background: var(--green-light); color: var(--green); border: 1px solid #bbf7d0; }
 .badge-no-intl { background: var(--surface2); color: var(--text-3); border: 1px solid var(--border); }
 .badge-prestige-high { background: var(--text); color: white; }
-.badge-prestige-mid { background: var(--accent-light); color: var(--accent); border: 1px solid #bfdbfe; }
+.badge-prestige-mid { background: var(--accent-light); color: var(--accent); border: 1px solid #e8c4cb; }
 .badge-prestige-low { background: var(--surface2); color: var(--text-3); border: 1px solid var(--border); }
 
 .card-title {
@@ -616,7 +616,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  box-shadow: 0 0 0 3px rgba(160,90,106,0.12);
   background: var(--surface);
 }
 
