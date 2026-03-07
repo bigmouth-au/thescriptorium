@@ -310,6 +310,29 @@ body {
 .nav-link:hover { color: var(--text); }
 .nav-link.active { color: var(--accent); border-bottom-color: var(--accent); }
 
+.nav-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  padding: 0.45rem 1.1rem;
+  background: var(--accent);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  margin-left: 0.5rem;
+  align-self: center;
+}
+.nav-cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(160,90,106,0.35);
+}
+.nav-cta:active { transform: translateY(0); }
+
 /* ---- SECTIONS ---- */
 .section { display: none; }
 .section.active { display: block; }
@@ -1295,6 +1318,7 @@ footer a:hover { color: white; }
     <a href="#" class="nav-link active" id="nav-directory" onclick="showSection('directory',this);return false;">Competitions</a>
     <a href="#" class="nav-link" id="nav-resources" onclick="showSection('resources',this);return false;">Resources</a>
     <a href="#" class="nav-link" id="nav-broadcast" onclick="showSection('broadcast',this);return false;">Broadcast to Writers</a>
+    <a href="#" class="nav-cta" onclick="scrollToNewsletter();return false;">✉ Subscribe free</a>
   </div>
 </nav>
 
@@ -1441,44 +1465,7 @@ footer a:hover { color: white; }
   </div>
 
   <!-- NEWSLETTER SIGNUP -->
-  <section class="newsletter-section" aria-label="Newsletter signup">
-    <div class="newsletter-inner">
-      <div class="newsletter-copy">
-        <div class="newsletter-eyebrow">Free monthly digest</div>
-        <h2 class="newsletter-heading">Never miss a <em>deadline</em> again</h2>
-        <p class="newsletter-desc">Each month we'll send you the competitions closing soon, newly added prizes, and any free-entry opportunities — straight to your inbox.</p>
-        <div class="newsletter-proof">
-          <span>Free forever</span>
-          <span class="newsletter-proof-dot"></span>
-          <span>Unsubscribe anytime</span>
-          <span class="newsletter-proof-dot"></span>
-          <span>No spam</span>
-        </div>
-      </div>
-      <div>
-        <form class="ml-form" id="ml-signup-form" novalidate>
-          <div class="ml-field">
-            <label class="ml-label" for="ml-first-name">First name</label>
-            <input class="ml-input" type="text" id="ml-first-name" name="fields[name]"
-              placeholder="Jane" autocomplete="given-name">
-          </div>
-          <div class="ml-field">
-            <label class="ml-label" for="ml-email">Email address</label>
-            <input class="ml-input" type="email" id="ml-email" name="email"
-              placeholder="jane@example.com" autocomplete="email" required>
-            <span class="ml-error-msg" id="ml-email-error">Please enter a valid email address.</span>
-          </div>
-          <button class="ml-submit" type="submit" id="ml-submit-btn">Send me the digest →</button>
-          <p class="ml-privacy">By subscribing you agree to receive our monthly newsletter. We respect your privacy and will never share your details.</p>
-        </form>
-        <div class="ml-success" id="ml-success">
-          <div class="ml-success-icon">✉️</div>
-          <h3>You're on the list!</h3>
-          <p>Check your inbox for a confirmation email — you may need to check your spam folder just this once.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div id="newsletter-directory"></div>
 
 </div><!-- /section-directory -->
 
@@ -1565,6 +1552,8 @@ footer a:hover { color: white; }
       </div>
     </div>
   </div>
+  <div id="newsletter-broadcast"></div>
+
 </div><!-- /section-broadcast -->
 
 <!-- RESOURCES SECTION -->
@@ -1637,6 +1626,8 @@ footer a:hover { color: white; }
 
   <!-- Resources grid (populated by JS) -->
   <div class="resources-grid" id="resources-grid"></div>
+
+  <div id="newsletter-resources"></div>
 
 </div><!-- /section-resources -->
 
@@ -1937,63 +1928,128 @@ function selectResourceCountry(country, el) {
 }
 
 // =============================================
-// MAILERLITE NEWSLETTER SIGNUP
+// MAILERLITE NEWSLETTER SIGNUP — all sections
 // =============================================
 const MAILERLITE_API_KEY  = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYWU4MDMzNTA0NzQzMmYxZGQ1ODY5Njk4YmFjYTJjMjJmYzMzODZhMGRiODMzOTFiOTFiMWU2MjZlOTY0MGU5NTI3ZmUzYWY3NjNiMjRjNzAiLCJpYXQiOjE3NzI4NjY3NDYuNjQ2NjY4LCJuYmYiOjE3NzI4NjY3NDYuNjQ2NjcsImV4cCI6NDkyODU0MDM0Ni42NDI2MjUsInN1YiI6IjIxODgyNjIiLCJzY29wZXMiOltdfQ.rAP3VJXULX8porVQXvxFvEen-SBUd5-vxRF0-lz5aZgleOfJH7YWw9q9QU58oAY48tEIUu7p4c9v2UzwQYStks7ts2tbmAp4gJQctv6PpZFKqx41jdXMLarmh6KbtvnEBkffYgwpms4mUoJLsvd6rhIrS49zlpfhIJjXElVQYxk_f_fZYERKRihwVDAB9HFP3kSj-X2b9UMi_em36pi6yO2avimEO4R7R0Vv3AKCF_iPQapTn5tosnVhci8yFf84erVPvK76-aEqD35dgi0b_7YmmzosO-KXhSEy1aTAMfKouUR3bvoPAOewCU0ngDgnaU3M6Ak7ENpCv29k0GtVeM5yv9W8tnqurEFIdSqgc-bPKpa8lG_Q8kEUUyKjwLBcSZpCbNJKOBGd-MBi5CcZXGYZYT4tqEu3pQXeVWZVpz5T9dgwvqIMkok2WmRJNPZ6MMWJAjl8xYB53CSQCf-mM8dFdOLu70K_sSowkzYwFQWZWSzeq6Ja8KUouAi92UFbMLGsSvtXt9s_kO3gEIp1ccwDJxiQh2-E541n1DkBTGkZ9thKzhjZdk933GftEI5D-HSZkwy21Hq6pyebU1430zH3ewI5Syu4PVfEgc_dTl1hfeNTbMNDRCmYEoFlraiR-LmBaM7QwODipicxQWk_FQyiDLX03N_1JCQJx3-5jfl0';
 const MAILERLITE_GROUP_ID = '181263296197821532';
 
-document.getElementById('ml-signup-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const emailEl  = document.getElementById('ml-email');
-  const nameEl   = document.getElementById('ml-first-name');
-  const errorEl  = document.getElementById('ml-email-error');
-  const submitBtn = document.getElementById('ml-submit-btn');
+// Build newsletter HTML for a given instance ID suffix
+function buildNewsletterHTML(suffix) {
+  return `
+  <section class="newsletter-section" aria-label="Newsletter signup">
+    <div class="newsletter-inner">
+      <div class="newsletter-copy">
+        <div class="newsletter-eyebrow">Free monthly digest</div>
+        <h2 class="newsletter-heading">Never miss a <em>deadline</em> again</h2>
+        <p class="newsletter-desc">Each month we'll send you the competitions closing soon, newly added prizes, and any free-entry opportunities — straight to your inbox.</p>
+        <div class="newsletter-proof">
+          <span>Free forever</span>
+          <span class="newsletter-proof-dot"></span>
+          <span>Unsubscribe anytime</span>
+          <span class="newsletter-proof-dot"></span>
+          <span>No spam</span>
+        </div>
+      </div>
+      <div>
+        <form class="ml-form" id="ml-form-${suffix}" novalidate>
+          <div class="ml-field">
+            <label class="ml-label" for="ml-name-${suffix}">First name</label>
+            <input class="ml-input" type="text" id="ml-name-${suffix}"
+              placeholder="Jane" autocomplete="given-name">
+          </div>
+          <div class="ml-field">
+            <label class="ml-label" for="ml-email-${suffix}">Email address</label>
+            <input class="ml-input" type="email" id="ml-email-${suffix}"
+              placeholder="jane@example.com" autocomplete="email" required>
+            <span class="ml-error-msg" id="ml-error-${suffix}">Please enter a valid email address.</span>
+          </div>
+          <button class="ml-submit" type="submit">Send me the digest →</button>
+          <p class="ml-privacy">By subscribing you agree to receive our monthly newsletter. We respect your privacy and will never share your details.</p>
+        </form>
+        <div class="ml-success" id="ml-success-${suffix}" style="display:none;">
+          <div class="ml-success-icon">✉️</div>
+          <h3>You're on the list!</h3>
+          <p>Check your inbox for a confirmation email — you may need to check your spam folder just this once.</p>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(emailEl.value.trim())) {
-    errorEl.style.display = 'block';
-    emailEl.focus();
-    return;
-  }
-  errorEl.style.display = 'none';
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Subscribing…';
+// Wire up submit handler for a given instance
+function initNewsletterForm(suffix) {
+  const form = document.getElementById(`ml-form-${suffix}`);
+  if (!form) return;
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const emailEl  = document.getElementById(`ml-email-${suffix}`);
+    const nameEl   = document.getElementById(`ml-name-${suffix}`);
+    const errorEl  = document.getElementById(`ml-error-${suffix}`);
+    const submitBtn = form.querySelector('.ml-submit');
 
-  try {
-    const response = await fetch('https://scriptorium.scutt-rmit.workers.dev/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${MAILERLITE_API_KEY}`
-      },
-      body: JSON.stringify({
-        email: emailEl.value.trim(),
-        fields: { name: nameEl.value.trim() },
-        groups: [MAILERLITE_GROUP_ID]
-      })
-    });
-
-    if (response.ok || response.status === 201) {
-      document.getElementById('ml-signup-form').style.display = 'none';
-      document.getElementById('ml-success').style.display = 'block';
-    } else {
-      const data = await response.json();
-      // Already subscribed — treat as success
-      if (response.status === 422) {
-        document.getElementById('ml-signup-form').style.display = 'none';
-        document.getElementById('ml-success').style.display = 'block';
-      } else {
-        throw new Error(data?.message || 'Subscription failed');
-      }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailEl.value.trim())) {
+      errorEl.style.display = 'block';
+      emailEl.focus();
+      return;
     }
-  } catch (err) {
-    console.error('MailerLite error:', err);
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Send me the digest →';
-    alert('Something went wrong — please try again shortly.');
+    errorEl.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Subscribing…';
+
+    try {
+      const response = await fetch('https://scriptorium.scutt-rmit.workers.dev/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${MAILERLITE_API_KEY}`
+        },
+        body: JSON.stringify({
+          email: emailEl.value.trim(),
+          fields: { name: nameEl.value.trim() },
+          groups: [MAILERLITE_GROUP_ID]
+        })
+      });
+
+      if (response.ok || response.status === 201 || response.status === 422) {
+        form.style.display = 'none';
+        document.getElementById(`ml-success-${suffix}`).style.display = 'block';
+      } else {
+        throw new Error('Subscription failed');
+      }
+    } catch (err) {
+      console.error('MailerLite error:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send me the digest →';
+      alert('Something went wrong — please try again shortly.');
+    }
+  });
+}
+
+// Render newsletter into all three section placeholders
+['directory', 'broadcast', 'resources'].forEach(suffix => {
+  const el = document.getElementById(`newsletter-${suffix}`);
+  if (el) {
+    el.innerHTML = buildNewsletterHTML(suffix);
+    initNewsletterForm(suffix);
   }
 });
+
+// scrollToNewsletter — used by the nav CTA button
+// Shows the current active section's newsletter form and scrolls to it
+function scrollToNewsletter() {
+  const activeSection = document.querySelector('.section.active');
+  if (!activeSection) return;
+  const newsletter = activeSection.querySelector('.newsletter-section');
+  if (newsletter) {
+    newsletter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Briefly highlight it
+    newsletter.style.outline = '2px solid var(--accent)';
+    newsletter.style.outlineOffset = '4px';
+    setTimeout(() => { newsletter.style.outline = ''; newsletter.style.outlineOffset = ''; }, 1800);
+  }
+}
 // =============================================
 
 // Wire up resource filter controls
