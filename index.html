@@ -152,7 +152,7 @@
 <!-- ═══ FONTS ═══ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,600;1,9..40,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Skip link for accessibility & crawlability */
 .skip-link {
@@ -174,22 +174,22 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #fdf8f7;
+  --bg: #fdf8f6;
   --surface: #ffffff;
-  --surface2: #f7f0ef;
-  --border: #ecddd9;
-  --border-strong: #d4b8b3;
-  --text: #2a1f1d;
-  --text-2: #6b514d;
-  --text-3: #a8908c;
-  --accent: #a05a6a;
-  --accent-hover: #7e4253;
-  --accent-light: #fdf0f2;
+  --surface2: #f8f0ec;
+  --border: #e8d5cc;
+  --border-strong: #d4b5a8;
+  --text: #2a1f1a;
+  --text-2: #6b4f45;
+  --text-3: #a88278;
+  --accent: #c4633a;
+  --accent-hover: #a04e2c;
+  --accent-light: #fdf0ea;
   --green: #5a7a65;
   --green-light: #eef4f0;
   --amber: #9a6040;
   --amber-light: #fdf3ed;
-  --red: #a05a6a;
+  --red: #c4633a;
   --radius: 10px;
   --radius-sm: 6px;
   --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
@@ -283,7 +283,7 @@ body {
 }
 
 .nav-brand {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--text);
@@ -329,7 +329,7 @@ body {
 .nav-cta:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(160,90,106,0.35);
+  box-shadow: 0 3px 10px rgba(196,99,58,0.35);
 }
 .nav-cta:active { transform: translateY(0); }
 
@@ -359,9 +359,9 @@ body {
 }
 
 .site-header h1 {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.75rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -389,7 +389,7 @@ body {
 .stat { display: flex; flex-direction: column; gap: 0.2rem; }
 
 .stat-num {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 2rem;
   font-weight: 600;
   color: var(--text);
@@ -452,7 +452,7 @@ select {
 }
 
 select:hover { border-color: var(--border-strong); }
-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(160,90,106,0.12); }
+select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(196,99,58,0.12); }
 
 .search-wrap {
   flex: 1;
@@ -485,7 +485,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   transition: all 0.15s;
 }
 
-.search-wrap input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(160,90,106,0.12); }
+.search-wrap input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(196,99,58,0.12); }
 .search-wrap input::placeholder { color: var(--text-3); }
 
 /* ---- RESULTS BAR ---- */
@@ -567,11 +567,11 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 .badge-intl { background: var(--green-light); color: var(--green); border: 1px solid #bbf7d0; }
 .badge-no-intl { background: var(--surface2); color: var(--text-3); border: 1px solid var(--border); }
 .badge-prestige-high { background: var(--text); color: white; }
-.badge-prestige-mid { background: var(--accent-light); color: var(--accent); border: 1px solid #e8c4cb; }
+.badge-prestige-mid { background: var(--accent-light); color: var(--accent); border: 1px solid #f0c9b8; }
 .badge-prestige-low { background: var(--surface2); color: var(--text-3); border: 1px solid var(--border); }
 
 .card-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.3;
@@ -658,7 +658,23 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   gap: 0.5rem;
 }
 
-.deadline-chip { font-size: 0.78rem; color: var(--text-3); }
+.deadline-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid #f0c9b8;
+  border-radius: 20px;
+  padding: 0.2rem 0.65rem;
+}
+.deadline-chip::before {
+  content: '📅';
+  font-size: 0.65rem;
+}
 
 .card-link {
   font-size: 0.8rem;
@@ -682,7 +698,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 .empty-state.visible { display: block; }
 
 .empty-state p {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.5rem;
   font-style: italic;
   color: var(--text-3);
@@ -703,9 +719,9 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 }
 
 .broadcast-intro h2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -763,7 +779,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 }
 
 .form-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--text);
@@ -804,7 +820,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(160,90,106,0.12);
+  box-shadow: 0 0 0 3px rgba(196,99,58,0.12);
   background: var(--surface);
 }
 
@@ -844,7 +860,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 .form-success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
 
 .form-success h3 {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -865,9 +881,9 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 }
 
 .resources-header h1 {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.75rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -957,7 +973,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 }
 
 .resources-landing h2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.75rem;
   font-weight: 600;
   color: var(--text);
@@ -987,7 +1003,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 }
 
 .resource-group-heading {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text);
@@ -1056,7 +1072,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
 }
 
 .resource-card-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
@@ -1152,7 +1168,7 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   position: absolute;
   top: -60px; right: -60px;
   width: 240px; height: 240px;
-  background: radial-gradient(circle, rgba(160,90,106,0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196,99,58,0.3) 0%, transparent 70%);
   pointer-events: none;
 }
 .newsletter-section::after {
@@ -1193,14 +1209,14 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   background: var(--accent);
 }
 .newsletter-heading {
-  font-family: 'Fraunces', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: clamp(1.4rem, 2.5vw, 1.875rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.15;
   color: #fff;
   margin-bottom: 0.875rem;
 }
-.newsletter-heading em { font-style: italic; color: rgba(160,90,106,0.9); }
+.newsletter-heading em { font-style: italic; color: rgba(196,99,58,0.9); }
 .newsletter-desc {
   font-size: 0.875rem;
   line-height: 1.7;
@@ -1251,13 +1267,13 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   width: 100%;
   margin-top: 0.25rem;
 }
-.ml-submit:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(160,90,106,0.4); }
+.ml-submit:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(196,99,58,0.4); }
 .ml-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 .ml-privacy { font-size: 0.7rem; color: rgba(255,255,255,0.3); line-height: 1.6; text-align: center; }
 .ml-privacy a { color: rgba(255,255,255,0.45); text-decoration: underline; }
 .ml-success { display: none; text-align: center; padding: 1rem 0; }
 .ml-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-.ml-success h3 { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+.ml-success h3 { font-family: 'DM Sans', sans-serif; font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
 .ml-success p { font-size: 0.8125rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
 .ml-error-msg { font-size: 0.75rem; color: #fca5a5; display: none; margin-top: 0.25rem; }
 
@@ -1641,7 +1657,6 @@ footer a:hover { color: white; }
     <span class="divider">|</span>
     Always verify details on official competition websites before submitting
   </p>
-  <p style="margin-top:0.4rem;">Data sourced from <a href="https://bridportprize.org.uk" target="_blank" rel="noopener">bridportprize.org.uk</a>, <a href="https://thebookerprizes.com" target="_blank" rel="noopener">thebookerprizes.com</a>, and other official sources. | <a href="/sitemap.xml">Sitemap</a></p>
 </footer>
 
 <script>
@@ -1716,7 +1731,7 @@ function createCard(comp) {
         </div>
       </div>
       <div class="card-footer">
-        <span class="deadline-chip">Closes: ${comp.deadline}</span>
+        <span class="deadline-chip">${comp.deadline}</span>
         <a class="card-link" href="${comp.url}" target="_blank" rel="noopener">Visit site →</a>
       </div>
     </div>`;
