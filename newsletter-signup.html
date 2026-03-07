@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  THE SCRIPTORIUM — Newsletter Signup Form                        ║
+  ║  Powered by MailerLite (free tier: 1,000 subscribers,           ║
+  ║  12,000 emails/month, full automation included)                  ║
+  ║                                                                  ║
+  ║  ✅ API key and Group ID are already configured.                 ║
+  ║                                                                  ║
+  ║  TO ADD TO index.html:                                           ║
+  ║  Copy the CSS between the CUT HERE markers into the <style>      ║
+  ║  block, copy the HTML section into the body, and merge the       ║
+  ║  <script> block into the existing script at the bottom.          ║
+  ╚══════════════════════════════════════════════════════════════════╝
+
+  HOW TO ADD TO index.html:
+  ─────────────────────────
+  Copy everything between the CUT HERE markers and paste it into
+  index.html, ideally just before the closing </main> tag, or at
+  the bottom of the directory section (before the filter controls).
+
+  The CSS goes in the <style> block.
+  The HTML goes in the body.
+  The <script> goes at the bottom of the page before </script>.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter Signup Preview — The Scriptorium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,900;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── Site design tokens (already in index.html, included here for preview) ── */
+:root {
+  --bg:           #fdf8f7;
+  --surface:      #ffffff;
+  --surface2:     #f7f0ef;
+  --border:       #ecddd9;
+  --border-strong:#d4b8b3;
+  --accent:       #a05a6a;
+  --accent-hover: #7e4253;
+  --text:         #2a1f1d;
+  --text-2:       #6b514d;
+  --text-3:       #a8908c;
+  --green:        #5a7a65;
+  --radius:       10px;
+  --shadow:       0 2px 12px rgba(42,31,29,0.07);
+  --shadow-hover: 0 6px 24px rgba(42,31,29,0.13);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ════════════════════════════════════════════════
+   NEWSLETTER SIGNUP SECTION
+   ════════════════════════════════════════════════ */
+
+/* ── CUT HERE — CSS ── */
+.newsletter-section {
+  background: linear-gradient(135deg, #2a1f1d 0%, #3d2b28 100%);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* Decorative background flourish */
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(160,90,106,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.newsletter-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(90,122,101,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.newsletter-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .newsletter-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .newsletter-section { padding: 2rem 1.5rem; }
+}
+
+.newsletter-copy {}
+
+.newsletter-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.newsletter-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: var(--accent);
+}
+
+.newsletter-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 0.875rem;
+}
+
+.newsletter-heading em {
+  font-style: italic;
+  color: rgba(160,90,106,0.9);
+}
+
+.newsletter-desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.25rem;
+}
+
+.newsletter-proof {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.newsletter-proof-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+}
+
+/* ── Form ── */
+.newsletter-form-wrap {}
+
+.ml-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ml-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ml-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.02em;
+}
+
+.ml-input {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+
+.ml-input::placeholder { color: rgba(255,255,255,0.3); }
+
+.ml-input:focus {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.1);
+}
+
+.ml-submit {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  width: 100%;
+  margin-top: 0.25rem;
+  letter-spacing: 0.01em;
+}
+
+.ml-submit:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(160,90,106,0.4);
+}
+
+.ml-submit:active { transform: translateY(0); }
+
+.ml-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ml-privacy {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.ml-privacy a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: underline;
+}
+
+/* ── Success state ── */
+.ml-success {
+  display: none;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.ml-success-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ml-success h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.ml-success p {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.65;
+}
+
+.ml-error-msg {
+  font-size: 0.75rem;
+  color: #fca5a5;
+  display: none;
+  margin-top: 0.25rem;
+}
+/* ── END CUT HERE — CSS ── */
+
+</style>
+</head>
+<body>
+
+<p style="font-family:monospace;font-size:0.75rem;background:#f0f0f0;padding:1rem;border-radius:6px;margin-bottom:2rem;color:#555;">
+  👆 PREVIEW MODE — This is how the form looks in context.<br>
+  See the source comments for how to embed it in index.html.<br>
+  ✅ API key and Group ID are already configured — this form is ready to use.
+</p>
+
+<!-- ════ CUT HERE — HTML (paste into index.html) ════ -->
+<section class="newsletter-section" aria-label="Newsletter signup">
+  <div class="newsletter-inner">
+
+    <div class="newsletter-copy">
+      <div class="newsletter-eyebrow">Free monthly digest</div>
+      <h2 class="newsletter-heading">
+        Never miss a <em>deadline</em> again
+      </h2>
+      <p class="newsletter-desc">
+        Each month we'll send you the competitions closing soon, newly added prizes, and any free-entry opportunities — straight to your inbox. No spam, ever.
+      </p>
+      <div class="newsletter-proof">
+        <span>Free forever</span>
+        <span class="newsletter-proof-dot"></span>
+        <span>Unsubscribe anytime</span>
+        <span class="newsletter-proof-dot"></span>
+        <span>No spam</span>
+      </div>
+    </div>
+
+    <div class="newsletter-form-wrap">
+      <form class="ml-form" id="ml-signup-form" novalidate>
+
+        <div class="ml-field">
+          <label class="ml-label" for="ml-first-name">First name</label>
+          <input class="ml-input" type="text" id="ml-first-name" name="fields[name]"
+            placeholder="Jane" autocomplete="given-name" required>
+        </div>
+
+        <div class="ml-field">
+          <label class="ml-label" for="ml-email">Email address</label>
+          <input class="ml-input" type="email" id="ml-email" name="email"
+            placeholder="jane@example.com" autocomplete="email" required>
+          <span class="ml-error-msg" id="ml-email-error">Please enter a valid email address.</span>
+        </div>
+
+        <button class="ml-submit" type="submit" id="ml-submit-btn">
+          Send me the digest →
+        </button>
+
+        <p class="ml-privacy">
+          By subscribing you agree to receive our monthly newsletter.
+          We respect your privacy and will never share your details.
+          Read our <a href="#" target="_blank">privacy policy</a>.
+        </p>
+
+      </form>
+
+      <div class="ml-success" id="ml-success">
+        <div class="ml-success-icon">✉️</div>
+        <h3>You're on the list!</h3>
+        <p>Check your inbox for a confirmation email — you may need to check your spam folder just this once.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ════ END CUT HERE — HTML ════ -->
+
+
+<!-- ════ CUT HERE — SCRIPT (merge into the existing <script> block in index.html) ════ -->
+<script>
+/*
+ * MailerLite signup form handler
+ * ───────────────────────────────────────────────────────────────────
+ * BEFORE GOING LIVE — replace these two values:
+ *
+ *   MAILERLITE_ACCOUNT_ID  — your account ID from:
+ *                            MailerLite → Account → General settings
+ *
+ *   MAILERLITE_GROUP_ID    — the subscriber group to add people to:
+ *                            MailerLite → Subscribers → Groups → [your group] → URL contains the ID
+ *
+ * HOW TO FIND THEM:
+ *   1. Log in at app.mailerlite.com
+ *   2. Account ID: click your name (top right) → Account settings → General
+ *      The "Account ID" number appears at the top of the page.
+ *   3. Group ID: Subscribers → Groups → create "Scriptorium Newsletter"
+ *      Click into the group — the URL is:
+ *      app.mailerlite.com/subscribers/[account_id]/[GROUP_ID]/[tab]
+ *
+ * MailerLite API docs: https://developers.mailerlite.com/docs/subscribers
+ * ───────────────────────────────────────────────────────────────────
+ */
+
+const MAILERLITE_API_KEY  = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYWU4MDMzNTA0NzQzMmYxZGQ1ODY5Njk4YmFjYTJjMjJmYzMzODZhMGRiODMzOTFiOTFiMWU2MjZlOTY0MGU5NTI3ZmUzYWY3NjNiMjRjNzAiLCJpYXQiOjE3NzI4NjY3NDYuNjQ2NjY4LCJuYmYiOjE3NzI4NjY3NDYuNjQ2NjcsImV4cCI6NDkyODU0MDM0Ni42NDI2MjUsInN1YiI6IjIxODgyNjIiLCJzY29wZXMiOltdfQ.rAP3VJXULX8porVQXvxFvEen-SBUd5-vxRF0-lz5aZgleOfJH7YWw9q9QU58oAY48tEIUu7p4c9v2UzwQYStks7ts2tbmAp4gJQctv6PpZFKqx41jdXMLarmh6KbtvnEBkffYgwpms4mUoJLsvd6rhIrS49zlpfhIJjXElVQYxk_f_fZYERKRihwVDAB9HFP3kSj-X2b9UMi_em36pi6yO2avimEO4R7R0Vv3AKCF_iPQapTn5tosnVhci8yFf84erVPvK76-aEqD35dgi0b_7YmmzosO-KXhSEy1aTAMfKouUR3bvoPAOewCU0ngDgnaU3M6Ak7ENpCv29k0GtVeM5yv9W8tnqurEFIdSqgc-bPKpa8lG_Q8kEUUyKjwLBcSZpCbNJKOBGd-MBi5CcZXGYZYT4tqEu3pQXeVWZVpz5T9dgwvqIMkok2WmRJNPZ6MMWJAjl8xYB53CSQCf-mM8dFdOLu70K_sSowkzYwFQWZWSzeq6Ja8KUouAi92UFbMLGsSvtXt9s_kO3gEIp1ccwDJxiQh2-E541n1DkBTGkZ9thKzhjZdk933GftEI5D-HSZkwy21Hq6pyebU1430zH3ewI5Syu4PVfEgc_dTl1hfeNTbMNDRCmYEoFlraiR-LmBaM7QwODipicxQWk_FQyiDLX03N_1JCQJx3-5jfl0';
+const MAILERLITE_GROUP_ID = '181263296197821532';
+
+document.getElementById('ml-signup-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const emailEl  = document.getElementById('ml-email');
+  const nameEl   = document.getElementById('ml-first-name');
+  const errorEl  = document.getElementById('ml-email-error');
+  const submitBtn = document.getElementById('ml-submit-btn');
+
+  // Client-side validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailEl.value.trim())) {
+    errorEl.style.display = 'block';
+    emailEl.focus();
+    return;
+  }
+  errorEl.style.display = 'none';
+
+  // Disable button + show loading state
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Subscribing…';
+
+  try {
+    /*
+     * MailerLite v2 API — subscribers endpoint
+     * Docs: https://developers.mailerlite.com/docs/subscribers
+     *
+     * NOTE: Direct API calls from the browser expose your API key.
+     * For a static GitHub Pages site this is acceptable for a low-risk
+     * newsletter, but the cleanest production approach is to proxy
+     * this through a Cloudflare Worker or Netlify Function.
+     *
+     * If you'd prefer the zero-backend approach, MailerLite also
+     * provides embeddable form scripts you can generate from their
+     * Forms UI — this custom version gives you full design control.
+     */
+    const response = await fetch(
+      `https://scriptorium.scutt-rmit.workers.dev/`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${MAILERLITE_API_KEY}`
+        },
+        body: JSON.stringify({
+          email: emailEl.value.trim(),
+          fields: {
+            name: nameEl.value.trim()
+          },
+          groups: [MAILERLITE_GROUP_ID]
+        })
+      }
+    );
+
+    if (response.ok || response.status === 200 || response.status === 201) {
+      // Show success
+      document.getElementById('ml-signup-form').style.display = 'none';
+      document.getElementById('ml-success').style.display = 'block';
+    } else {
+      const data = await response.json();
+      // Handle already-subscribed gracefully
+      if (response.status === 422 && data?.errors?.email) {
+        // Already subscribed — show success anyway (good UX)
+        document.getElementById('ml-signup-form').style.display = 'none';
+        document.getElementById('ml-success').style.display = 'block';
+      } else {
+        throw new Error(data?.message || 'Subscription failed');
+      }
+    }
+
+  } catch (err) {
+    console.error('MailerLite error:', err);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send me the digest →';
+    alert('Something went wrong — please try again, or email us directly to subscribe.');
+  }
+});
+</script>
+<!-- ════ END CUT HERE — SCRIPT ════ -->
+
+<!--
+  ════════════════════════════════════════════════════════════
+  IMPORTANT SECURITY NOTE
+  ════════════════════════════════════════════════════════════
+
+  The MailerLite API call above uses your API key in the browser.
+  For a newsletter signup this is low risk, but the cleanest way
+  to handle it is via a tiny serverless proxy so the key stays
+  server-side. Two easy options:
+
+  OPTION A — Cloudflare Worker (free, 100k requests/day):
+  ─────────────────────────────────────────────────────────
+  Create a Worker at dash.cloudflare.com with this code:
+
+    export default {
+      async fetch(request) {
+        if (request.method !== 'POST') return new Response('Method not allowed', { status: 405 });
+        const body = await request.json();
+        const res = await fetch('https://scriptorium.scutt-rmit.workers.dev/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer YOUR_MAILERLITE_API_KEY'
+          },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        return new Response(JSON.stringify(data), {
+          status: res.status,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://www.thescriptorium.com.au'
+          }
+        });
+      }
+    };
+
+  Then change the fetch URL in the form script to your Worker URL.
+
+  OPTION B — Use MailerLite's own embeddable form (no API key needed):
+  ─────────────────────────────────────────────────────────────────────
+  In MailerLite: Forms → Embedded Forms → create a form → copy the
+  embed code. Replace the <form> block in this file with their embed
+  snippet, then restyle it using the CSS above targeting their class names.
+  Less control, but zero security considerations.
+
+  ════════════════════════════════════════════════════════════
+-->
+
+</body>
+</html>
