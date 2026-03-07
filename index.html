@@ -2027,17 +2027,24 @@ function initNewsletterForm(suffix) {
         })
       });
 
-      if (response.ok || response.status === 201 || response.status === 422) {
+      // Log full response for diagnostics
+      const data = await response.json().catch(() => ({}));
+      console.log('MailerLite response:', response.status, JSON.stringify(data));
+
+      // 200/201 = success, 422 = already subscribed (treat as success), 
+      // anything else = log and show error
+      if (response.status === 200 || response.status === 201 || response.status === 422) {
         form.style.display = 'none';
         document.getElementById(`ml-success-${suffix}`).style.display = 'block';
       } else {
-        throw new Error('Subscription failed');
+        console.error('MailerLite rejected:', response.status, data);
+        throw new Error(`Status ${response.status}: ${data?.message || JSON.stringify(data)}`);
       }
     } catch (err) {
-      console.error('MailerLite error:', err);
+      console.error('MailerLite error:', err.message);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send me the digest →';
-      alert('Something went wrong — please try again shortly.');
+      alert(`Signup error: ${err.message}`);
     }
   });
 }
