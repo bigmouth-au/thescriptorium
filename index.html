@@ -1241,4 +1241,9 @@ fetch('competitions.json')
 fetch('resources.json')
   .then(r => r.json())
   .then(resources => { allResources = resources; renderResources(''); })
-  .catch
+  (() => {
+    document.getElementById('resources-grid').innerHTML = '<p style="color:var(--text-3);font-size:0.875rem;">Could not load resources.</p>';
+  });
+</script>
+</body>
+</html>
