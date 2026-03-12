@@ -460,6 +460,28 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
 .footer-nl-form button:hover { background: var(--primary-hover); }
 .footer-nl-success { display: none; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem; }
 .footer-nl-success.visible { display: block; }
+/* country select on all newsletter forms */
+.nl-country-row { margin-top: 0.5rem; max-width: 460px; display: flex; gap: 0.5rem; }
+.nl-country-select { flex: 1; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.5rem 2rem 0.5rem 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: rgba(255,255,255,0.75); outline: none; cursor: pointer; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5' viewBox='0 0 9 5'%3E%3Cpath d='M0 0l4.5 5 4.5-5z' fill='rgba(255,255,255,0.35)'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
+.nl-country-select option { background: #221510; color: white; }
+.nl-country-select:focus { border-color: var(--primary); }
+.nl-country-other { flex: 1; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.5rem 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: rgba(255,255,255,0.75); outline: none; display: none; }
+.nl-country-other::placeholder { color: rgba(255,255,255,0.3); }
+.nl-country-other:focus { border-color: var(--primary); }
+.nl-hint { font-size: 0.68rem; color: rgba(255,255,255,0.28); margin-top: 0.375rem; }
+/* footer contact form */
+.footer-contact { margin-top: 1.5rem; }
+.footer-contact-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.625rem; }
+.footer-contact-form { display: flex; flex-direction: column; gap: 0.5rem; max-width: 280px; }
+.footer-contact-form input, .footer-contact-form textarea { font-family: 'Inter', sans-serif; font-size: 0.8125rem; color: white; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.5rem 0.75rem; outline: none; resize: none; transition: border-color 0.2s; }
+.footer-contact-form input::placeholder, .footer-contact-form textarea::placeholder { color: rgba(255,255,255,0.28); }
+.footer-contact-form input:focus, .footer-contact-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(236,73,19,0.15); }
+.footer-contact-form textarea { min-height: 80px; }
+.footer-contact-btn { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 700; padding: 0.5rem 1.125rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; transition: background 0.15s; align-self: flex-start; }
+.footer-contact-btn:hover { background: var(--primary-hover); }
+.footer-contact-btn:disabled { background: rgba(255,255,255,0.15); cursor: not-allowed; }
+.footer-contact-success { display: none; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 0.375rem; }
+.footer-contact-success.visible { display: block; }
 .footer-col h4 { font-size: 0.67rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
 .footer-col ul li a { font-size: 0.8125rem; font-weight: 500; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.15s; }
@@ -574,7 +596,7 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
 
       <div class="hero-image-panel">
         <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80" alt="Fountain pen on paper" loading="lazy">
+          <img src="hero-writer.png" alt="Writer at typewriter in a cosy study" loading="lazy">
         </div>
       </div>
     </div>
@@ -809,7 +831,30 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
           <input type="email" placeholder="your@email.com" id="footer-nl-email" required>
           <button type="submit">Join</button>
         </form>
+        <div class="nl-country-row" style="max-width:280px;">
+          <select class="nl-country-select" id="footer-nl-country" onchange="toggleOtherCountry('footer-nl-country-other',this.value)">
+            <option value="">Country (optional)</option>
+            <option value="Australia">🇦🇺 Australia</option>
+            <option value="New Zealand">🇳🇿 New Zealand</option>
+            <option value="UK">🇬🇧 United Kingdom</option>
+            <option value="Ireland">🇮🇪 Ireland</option>
+            <option value="USA">🇺🇸 United States</option>
+            <option value="Canada">🇨🇦 Canada</option>
+            <option value="other">✏ Other…</option>
+          </select>
+          <input type="text" class="nl-country-other" id="footer-nl-country-other" placeholder="Your country">
+        </div>
         <div class="footer-nl-success" id="footer-nl-success">✓ You're subscribed!</div>
+        <div class="footer-contact">
+          <div class="footer-contact-label">Contact us</div>
+          <form class="footer-contact-form" id="footer-contact-form" onsubmit="handleContact(event)">
+            <input type="email" id="contact-email" placeholder="your@email.com" required>
+            <textarea id="contact-message" placeholder="Your message…" required></textarea>
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <button type="submit" class="footer-contact-btn" id="contact-btn">Send →</button>
+          </form>
+          <div class="footer-contact-success" id="footer-contact-success">✓ Message sent! We'll be in touch.</div>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Directory</h4>
@@ -835,7 +880,7 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
         <h4>The Scriptorium</h4>
         <ul>
           <li><a href="#" onclick="showSection('broadcast');return false;">Broadcast to Writers</a></li>
-          <li><a href="mailto:hello@thescriptorium.com.au">Contact Us</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#49212c252526093d212c3a2a3b20393d263b203c24672a262467283c">Contact Us</a></li>
         </ul>
       </div>
     </div>
@@ -852,7 +897,7 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // --- STATE ---
 let sidebarType = '', sidebarCountry = '', sidebarPrestige = '';
 let allResources = [];
@@ -957,15 +1002,39 @@ function createCard(comp) {
 }
 
 // --- NEWSLETTER CARD ---
+function toggleOtherCountry(otherId, val) {
+  const el = document.getElementById(otherId);
+  if (el) { el.style.display = val === 'other' ? 'block' : 'none'; if (val === 'other') el.focus(); }
+}
+function getCountryValue(selectId, otherId) {
+  const sel = document.getElementById(selectId);
+  if (!sel) return '';
+  if (sel.value === 'other') { const o = document.getElementById(otherId); return o ? o.value.trim() : ''; }
+  return sel.value;
+}
 function createNewsletterCard() {
   return `<div class="newsletter-inline" id="nl-inline">
     <h3>The Weekly Scriptorium</h3>
     <p>Join thousands of writers getting curated competition deadlines and literary news every Tuesday.</p>
     <form class="nl-form" id="nl-inline-form" onsubmit="handleNLInline(event)">
       <input type="email" placeholder="your@email.com" id="nl-inline-email" required>
-      <button type="submit">Subscribe free →</button>
+      <button type="submit">Subscribe free \u2192</button>
     </form>
-    <div class="nl-success" id="nl-inline-success">✓ Welcome! Check your inbox to confirm.</div>
+    <div class="nl-country-row">
+      <select class="nl-country-select" id="nl-inline-country" onchange="toggleOtherCountry('nl-inline-country-other',this.value)">
+        <option value="">Your country (optional)</option>
+        <option value="Australia">\u{1F1E6}\u{1F1FA} Australia</option>
+        <option value="New Zealand">\u{1F1F3}\u{1F1FF} New Zealand</option>
+        <option value="UK">\u{1F1EC}\u{1F1E7} United Kingdom</option>
+        <option value="Ireland">\u{1F1EE}\u{1F1EA} Ireland</option>
+        <option value="USA">\u{1F1FA}\u{1F1F8} United States</option>
+        <option value="Canada">\u{1F1E8}\u{1F1E6} Canada</option>
+        <option value="other">\u270F Other\u2026</option>
+      </select>
+      <input type="text" class="nl-country-other" id="nl-inline-country-other" placeholder="Type your country">
+    </div>
+    <p class="nl-hint">Free. No spam. Unsubscribe anytime.</p>
+    <div class="nl-success" id="nl-inline-success">\u2713 Welcome! Check your inbox to confirm.</div>
   </div>`;
 }
 
@@ -1038,33 +1107,39 @@ function filterAndSort() {
 }
 
 // --- SUBSCRIBE ---
-async function subscribeEmail(email) {
+async function subscribeEmail(email, country) {
+  const payload = { email, groups: ['181263296197821532'] };
+  if (country) payload.fields = { country };
   try {
     await fetch('https://scriptorium.scutt-rmit.workers.dev/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, groups: ['181263296197821532'] })
+      body: JSON.stringify(payload)
     });
   } catch(err) { console.error('Subscription error', err); }
 }
 async function handleNLInline(e) {
   e.preventDefault();
   const email = document.getElementById('nl-inline-email').value;
+  const country = getCountryValue('nl-inline-country', 'nl-inline-country-other');
   const btn = e.target.querySelector('button');
   btn.textContent = '…'; btn.disabled = true;
-  await subscribeEmail(email);
+  await subscribeEmail(email, country);
   document.getElementById('nl-inline-success').classList.add('visible');
   e.target.style.display = 'none';
+  document.getElementById('nl-inline-country') && (document.querySelector('.nl-country-row').style.display = 'none');
   if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { method: 'newsletter_inline' });
 }
 async function handleFooterNL(e) {
   e.preventDefault();
   const email = document.getElementById('footer-nl-email').value;
+  const country = getCountryValue('footer-nl-country', 'footer-nl-country-other');
   const btn = e.target.querySelector('button');
   btn.textContent = '…'; btn.disabled = true;
-  await subscribeEmail(email);
+  await subscribeEmail(email, country);
   document.getElementById('footer-nl-success').classList.add('visible');
   e.target.style.display = 'none';
+  if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { method: 'newsletter_footer' });
 }
 
 // --- BROADCAST FORM ---
@@ -1086,6 +1161,33 @@ document.getElementById('broadcast-form').addEventListener('submit', async funct
     alert('Could not connect. Please check your connection and try again.');
   }
 });
+
+// --- CONTACT FORM ---
+async function handleContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contact-btn');
+  const email = document.getElementById('contact-email').value;
+  const message = document.getElementById('contact-message').value;
+  btn.disabled = true; btn.textContent = '…';
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_CONTACT_FORM_ID', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, message, _subject: 'Scriptorium contact form' })
+    });
+    if (res.ok) {
+      document.getElementById('footer-contact-form').style.display = 'none';
+      document.getElementById('footer-contact-success').classList.add('visible');
+      if (typeof gtag !== 'undefined') gtag('event', 'contact', { method: 'footer_form' });
+    } else {
+      btn.disabled = false; btn.textContent = 'Send →';
+      alert('Something went wrong. Please try again.');
+    }
+  } catch {
+    btn.disabled = false; btn.textContent = 'Send →';
+    alert('Could not connect. Please check your connection and try again.');
+  }
+}
 
 // --- RESOURCES ---
 function renderResources(country) {
@@ -1139,7 +1241,4 @@ fetch('competitions.json')
 fetch('resources.json')
   .then(r => r.json())
   .then(resources => { allResources = resources; renderResources(''); })
-  .catch(() => { document.getElementById('resources-grid').innerHTML = '<p style="color:var(--text-3);">Could not load resources.</p>'; });
-</script>
-</body>
-</html>
+  .catch
