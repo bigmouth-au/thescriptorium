@@ -615,6 +615,7 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
           <button class="sidebar-btn" onclick="setSidebarType('short-story', this)">Short Story</button>
           <button class="sidebar-btn" onclick="setSidebarType('novel-extract', this)">Novel Extract</button>
           <button class="sidebar-btn" onclick="setSidebarType('novel', this)">Complete Novel</button>
+          <button class="sidebar-btn" onclick="setSidebarType('screenplay', this)">Screenplay</button>
         </div>
       </div>
 
@@ -945,7 +946,7 @@ function updateHeaderStats(competitions) {
 // --- CARD ---
 function createCard(comp) {
   const prestigeLabel = { high: 'High Prestige', mid: 'Mid Prestige', low: 'Emerging' };
-  const typeLabels = { 'novel': 'Complete Novel', 'novel-extract': 'Novel Extract', 'short-story': 'Short Story', 'flash': 'Flash Fiction', 'poetry': 'Poetry' };
+  const typeLabels = { 'novel': 'Complete Novel', 'novel-extract': 'Novel Extract', 'short-story': 'Short Story', 'flash': 'Flash Fiction', 'poetry': 'Poetry', 'screenplay': 'Screenplay' };
   const flagMap = { UK: '🇬🇧', USA: '🇺🇸', Australia: '🇦🇺', Canada: '🇨🇦', Ireland: '🇮🇪', 'New Zealand': '🇳🇿', International: '🌐' };
 
   const feeDisplay = comp.entryFeeSort === 0
