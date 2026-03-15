@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit a Competition — The Scriptorium</title>
+  <meta name="description" content="Know a writing competition that should be listed on The Scriptorium? Submit it for review here.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ec4913;
+      --primary-hover: #c93c0f;
+      --primary-light: #fef3ef;
+      --bg: #f8f6f6;
+      --bg-dark: #221510;
+      --surface: #ffffff;
+      --surface2: #f4f0ef;
+      --border: #ebe4e2;
+      --border-strong: #d5c8c5;
+      --text: #1a1210;
+      --text-2: #5c4843;
+      --text-3: #9c837e;
+      --green: #2d7a4f;
+      --green-light: #edf7f2;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--bg-dark);
+      padding: 0 1.5rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+    }
+    .nav-brand .material-symbols-outlined {
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: white; }
+    .nav-back .material-symbols-outlined { font-size: 1rem; }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* HEADER */
+    .page-header {
+      margin-bottom: 2.5rem;
+    }
+    .page-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+    .page-tag .material-symbols-outlined { font-size: 0.9rem; }
+    .page-header h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .page-header p {
+      font-size: 0.9375rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
+    /* GUIDELINES BOX */
+    .guidelines {
+      background: var(--primary-light);
+      border: 1px solid rgba(236,73,19,0.15);
+      border-left: 3px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.8375rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .guidelines strong { color: var(--text); font-weight: 600; }
+    .guidelines ul {
+      margin-top: 0.5rem;
+      padding-left: 1.25rem;
+    }
+    .guidelines li { margin-bottom: 0.25rem; }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* SECTIONS */
+    .form-section {
+      margin-bottom: 2rem;
+    }
+    .form-section:last-child { margin-bottom: 0; }
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.625rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .section-title .material-symbols-outlined { font-size: 0.95rem; color: var(--primary); }
+
+    /* FIELD */
+    .field { margin-bottom: 1.125rem; }
+    .field:last-child { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-2);
+      margin-bottom: 0.375rem;
+    }
+    label .req {
+      color: var(--primary);
+      margin-left: 2px;
+    }
+    label .hint {
+      font-weight: 400;
+      color: var(--text-3);
+      margin-left: 0.35rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.875rem;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      background: var(--surface);
+      box-shadow: 0 0 0 3px rgba(236,73,19,0.1);
+    }
+    input::placeholder, textarea::placeholder { color: var(--text-3); }
+    textarea { resize: vertical; min-height: 90px; line-height: 1.55; }
+    select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239c837e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.875rem center; padding-right: 2.25rem; }
+
+    /* TWO-COL GRID */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+    }
+    @media (max-width: 520px) {
+      .field-row { grid-template-columns: 1fr; }
+    }
+
+    /* CHECKBOX GROUP */
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.375rem;
+    }
+    .check-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-chip input[type="checkbox"] {
+      width: auto;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .check-chip span {
+      font-size: 0.8125rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.3rem 0.75rem;
+      color: var(--text-2);
+      transition: background 0.12s, border-color 0.12s, color 0.12s;
+      cursor: pointer;
+    }
+    .check-chip input:checked + span {
+      background: var(--primary-light);
+      border-color: rgba(236,73,19,0.35);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    /* hide native checkbox, use the span as visual */
+    .check-chip input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+
+    /* RADIO GROUP */
+    .radio-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.375rem;
+    }
+    .radio-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .radio-chip input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .radio-chip span {
+      font-size: 0.8125rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.3rem 0.875rem;
+      color: var(--text-2);
+      transition: background 0.12s, border-color 0.12s, color 0.12s;
+      cursor: pointer;
+    }
+    .radio-chip input:checked + span {
+      background: var(--primary-light);
+      border-color: rgba(236,73,19,0.35);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* SUBMITTER SECTION */
+    .submitter-note {
+      font-size: 0.8rem;
+      color: var(--text-3);
+      margin-top: 0.375rem;
+      line-height: 1.5;
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* SUBMIT BUTTON */
+    .submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+    .submit-note {
+      font-size: 0.775rem;
+      color: var(--text-3);
+      line-height: 1.5;
+      max-width: 320px;
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px rgba(236,73,19,0.2);
+      white-space: nowrap;
+    }
+    .btn-submit:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(236,73,19,0.28);
+    }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit .material-symbols-outlined { font-size: 1.05rem; }
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* SUCCESS STATE */
+    .success-panel {
+      display: none;
+      background: var(--green-light);
+      border: 1px solid rgba(45,122,79,0.2);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .success-panel .success-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .success-panel .success-icon .material-symbols-outlined {
+      color: white;
+      font-size: 1.75rem;
+      font-variation-settings: 'FILL' 1;
+    }
+    .success-panel h2 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 0.625rem;
+    }
+    .success-panel p {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      max-width: 380px;
+      margin: 0 auto 1.5rem;
+    }
+    .btn-another {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8375rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      padding: 0;
+    }
+    .btn-another:hover { text-decoration: underline; }
+
+    /* ERROR */
+    .field-error {
+      font-size: 0.775rem;
+      color: #dc2626;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    input.invalid, select.invalid, textarea.invalid {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220,38,38,0.1);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-dark);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      font-size: 0.775rem;
+      color: rgba(255,255,255,0.35);
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,0.8); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand">
+      <span class="material-symbols-outlined">auto_stories</span>
+      The Scriptorium
+    </a>
+    <a href="/" class="nav-back">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Back to directory
+    </a>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <div class="page-tag">
+        <span class="material-symbols-outlined">add_circle</span>
+        Submit a Competition
+      </div>
+      <h1>Know one we've missed?</h1>
+      <p>Help us keep the directory comprehensive. Submit a writing competition for review and we'll add verified entries within a few days.</p>
+    </div>
+
+    <div class="guidelines">
+      <strong>What we list:</strong> reputable competitions with clear judging criteria, transparent prize and fee information, and a verifiable track record.
+      <ul>
+        <li>We list competitions open to writers in Australia, NZ, UK, Ireland, USA, Canada, or internationally.</li>
+        <li>Vanity contests, pay-to-publish schemes, or competitions with no prize are not listed.</li>
+        <li>All submissions are reviewed before being added. We may edit for clarity and consistency.</li>
+      </ul>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-card" id="form-card">
+      <form id="submit-form" action="https://formspree.io/YOUR_SUBMIT_FORM_ID" method="POST" novalidate>
+
+        <!-- Hidden field for Formspree subject line -->
+        <input type="hidden" name="_subject" value="New competition submission — The Scriptorium">
+        <input type="hidden" name="_next" value="">
+
+        <!-- SECTION 1: COMPETITION DETAILS -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="material-symbols-outlined">trophy</span>
+            Competition details
+          </div>
+
+          <div class="field">
+            <label for="comp-name">Competition name <span class="req">*</span></label>
+            <input type="text" id="comp-name" name="competition_name" placeholder="e.g. Bridport Prize" required>
+            <div class="field-error" id="err-name">Please enter the competition name.</div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="comp-org">Organising body <span class="req">*</span></label>
+              <input type="text" id="comp-org" name="organising_body" placeholder="e.g. Bridport Arts Centre" required>
+              <div class="field-error" id="err-org">Please enter the organiser.</div>
+            </div>
+            <div class="field">
+              <label for="comp-url">Official website URL <span class="req">*</span></label>
+              <input type="url" id="comp-url" name="url" placeholder="https://…" required>
+              <div class="field-error" id="err-url">Please enter a valid URL.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Competition type <span class="req">*</span><span class="hint">— select all that apply</span></label>
+            <div class="checkbox-group">
+              <label class="check-chip"><input type="checkbox" name="types" value="poetry"><span>Poetry</span></label>
+              <label class="check-chip"><input type="checkbox" name="types" value="flash"><span>Flash Fiction</span></label>
+              <label class="check-chip"><input type="checkbox" name="types" value="short-story"><span>Short Story</span></label>
+              <label class="check-chip"><input type="checkbox" name="types" value="novel-extract"><span>Novel Extract</span></label>
+              <label class="check-chip"><input type="checkbox" name="types" value="novel"><span>Complete Novel</span></label>
+              <label class="check-chip"><input type="checkbox" name="types" value="screenplay"><span>Screenplay</span></label>
+              <label class="check-chip"><input type="checkbox" name="types" value="other"><span>Other</span></label>
+            </div>
+            <div class="field-error" id="err-types">Please select at least one competition type.</div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: ELIGIBILITY & GEOGRAPHY -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="material-symbols-outlined">public</span>
+            Eligibility &amp; geography
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="comp-country">Primary country <span class="req">*</span></label>
+              <select id="comp-country" name="country" required>
+                <option value="">Select…</option>
+                <option value="Australia">🇦🇺 Australia</option>
+                <option value="New Zealand">🇳🇿 New Zealand</option>
+                <option value="UK">🇬🇧 United Kingdom</option>
+                <option value="Ireland">🇮🇪 Ireland</option>
+                <option value="USA">🇺🇸 United States</option>
+                <option value="Canada">🇨🇦 Canada</option>
+                <option value="International">🌐 International / no restriction</option>
+              </select>
+              <div class="field-error" id="err-country">Please select a country.</div>
+            </div>
+            <div class="field">
+              <label>Open to international entrants?</label>
+              <div class="radio-group">
+                <label class="radio-chip"><input type="radio" name="international" value="yes"><span>Yes</span></label>
+                <label class="radio-chip"><input type="radio" name="international" value="no"><span>No</span></label>
+                <label class="radio-chip"><input type="radio" name="international" value="unsure"><span>Unsure</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="comp-age">Age restriction?</label>
+              <select id="comp-age" name="age_restriction">
+                <option value="">None / open to all ages</option>
+                <option value="under18">Under 18 only</option>
+                <option value="18-35">18–35 (emerging / youth)</option>
+                <option value="other">Other restriction</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="comp-gender">Gender restriction?</label>
+              <select id="comp-gender" name="gender_restriction">
+                <option value="">None / open to all</option>
+                <option value="women">Women / non-binary only</option>
+                <option value="other">Other restriction</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: PRIZE & FEES -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="material-symbols-outlined">payments</span>
+            Prize &amp; fees
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="comp-prize">Prize <span class="req">*</span> <span class="hint">— include currency</span></label>
+              <input type="text" id="comp-prize" name="prize" placeholder="e.g. £5,000 + publication" required>
+              <div class="field-error" id="err-prize">Please describe the prize.</div>
+            </div>
+            <div class="field">
+              <label for="comp-fee">Entry fee <span class="req">*</span> <span class="hint">— include currency, or "Free"</span></label>
+              <input type="text" id="comp-fee" name="entry_fee" placeholder="e.g. £12 per entry, or Free" required>
+              <div class="field-error" id="err-fee">Please describe the entry fee.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: DATES -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="material-symbols-outlined">calendar_month</span>
+            Deadline
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="comp-deadline">Closing date <span class="req">*</span></label>
+              <input type="text" id="comp-deadline" name="deadline" placeholder="e.g. 31 May 2026 or Rolling" required>
+              <div class="field-error" id="err-deadline">Please enter the deadline.</div>
+            </div>
+            <div class="field">
+              <label for="comp-prestige">Prestige level <span class="hint">— your assessment</span></label>
+              <select id="comp-prestige" name="prestige">
+                <option value="">Not sure</option>
+                <option value="high">High — major prize, strong track record</option>
+                <option value="mid">Mid — solid, well-run</option>
+                <option value="low">Emerging — newer or smaller</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 5: DESCRIPTION -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="material-symbols-outlined">description</span>
+            Description &amp; notes
+          </div>
+
+          <div class="field">
+            <label for="comp-desc">Brief description <span class="req">*</span> <span class="hint">— 2–4 sentences</span></label>
+            <textarea id="comp-desc" name="description" rows="4" placeholder="What makes this competition worth entering? Who runs it, what's the format, what do winners receive beyond the prize?" required></textarea>
+            <div class="field-error" id="err-desc">Please add a brief description.</div>
+          </div>
+
+          <div class="field">
+            <label for="comp-notes">Any other notes <span class="hint">— optional</span></label>
+            <textarea id="comp-notes" name="notes" rows="2" placeholder="e.g. membership required, multiple categories, feedback provided…"></textarea>
+          </div>
+        </div>
+
+        <!-- SECTION 6: SUBMITTER -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="material-symbols-outlined">person</span>
+            About you
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="sub-name">Your name <span class="hint">— optional</span></label>
+              <input type="text" id="sub-name" name="submitter_name" placeholder="Your name">
+            </div>
+            <div class="field">
+              <label for="sub-email">Your email <span class="hint">— optional, for follow-up</span></label>
+              <input type="email" id="sub-email" name="submitter_email" placeholder="you@email.com">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="sub-relationship">Your connection to this competition <span class="hint">— optional</span></label>
+            <select id="sub-relationship" name="submitter_relationship">
+              <option value="">Prefer not to say</option>
+              <option value="writer">Writer / entrant</option>
+              <option value="organiser">Competition organiser</option>
+              <option value="industry">Literary industry professional</option>
+              <option value="other">Other</option>
+            </select>
+            <p class="submitter-note">We note when submissions come from competition organisers, but this does not affect whether we list a competition.</p>
+          </div>
+        </div>
+
+        <!-- HONEYPOT (spam trap) -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="divider"></div>
+
+        <div class="submit-row">
+          <p class="submit-note">We review all submissions within 3–5 business days. We may edit entries for clarity and won't publish your contact details.</p>
+          <button type="submit" class="btn-submit" id="submit-btn">
+            <span class="material-symbols-outlined">send</span>
+            Submit for review
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- SUCCESS PANEL (hidden until submission) -->
+    <div class="success-panel" id="success-panel">
+      <div class="success-icon">
+        <span class="material-symbols-outlined">check</span>
+      </div>
+      <h2>Submission received</h2>
+      <p>Thank you — we'll review your submission and add it to the directory within a few days if it meets our guidelines.</p>
+      <button class="btn-another" onclick="resetForm()">
+        <span class="material-symbols-outlined" style="font-size:0.9rem;">add</span>
+        Submit another competition
+      </button>
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="/">The Scriptorium</a> · The world's most curated directory of writing competitions · <a href="/">Back to directory</a>
+  </footer>
+
+  <script>
+    const form = document.getElementById('submit-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formCard = document.getElementById('form-card');
+    const successPanel = document.getElementById('success-panel');
+
+    // Validate individual field
+    function validateField(el, errId, extraCheck) {
+      const err = document.getElementById(errId);
+      const isEmpty = !el.value.trim();
+      const fail = isEmpty || (extraCheck && !extraCheck(el.value.trim()));
+      el.classList.toggle('invalid', fail);
+      if (err) err.style.display = fail ? 'block' : 'none';
+      return !fail;
+    }
+
+    // Validate checkboxes (at least one checked)
+    function validateCheckboxGroup(name, errId) {
+      const checked = form.querySelectorAll(`input[name="${name}"]:checked`).length > 0;
+      const err = document.getElementById(errId);
+      if (err) err.style.display = checked ? 'none' : 'block';
+      return checked;
+    }
+
+    // Clear invalid state on change
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('input', () => {
+        el.classList.remove('invalid');
+        const errId = el.dataset.err;
+        if (errId) document.getElementById(errId).style.display = 'none';
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate required fields
+      let valid = true;
+      valid = validateField(document.getElementById('comp-name'), 'err-name') && valid;
+      valid = validateField(document.getElementById('comp-org'), 'err-org') && valid;
+      valid = validateField(document.getElementById('comp-url'), 'err-url', v => /^https?:\/\/.+/.test(v)) && valid;
+      valid = validateCheckboxGroup('types', 'err-types') && valid;
+      valid = validateField(document.getElementById('comp-country'), 'err-country') && valid;
+      valid = validateField(document.getElementById('comp-prize'), 'err-prize') && valid;
+      valid = validateField(document.getElementById('comp-fee'), 'err-fee') && valid;
+      valid = validateField(document.getElementById('comp-deadline'), 'err-deadline') && valid;
+      valid = validateField(document.getElementById('comp-desc'), 'err-desc') && valid;
+
+      if (!valid) {
+        // Scroll to first error
+        const firstInvalid = form.querySelector('.invalid, [style*="block"]');
+        if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Submit
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="material-symbols-outlined" style="animation:spin 0.8s linear infinite">progress_activity</span> Submitting…';
+
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          formCard.style.display = 'none';
+          successPanel.style.display = 'block';
+          successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span class="material-symbols-outlined">send</span> Submit for review';
+        alert('Something went wrong — please try again or email us directly.');
+      }
+    });
+
+    function resetForm() {
+      form.reset();
+      formCard.style.display = 'block';
+      successPanel.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span class="material-symbols-outlined">send</span> Submit for review';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Spinning animation for loader
+    const style = document.createElement('style');
+    style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>
