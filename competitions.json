@@ -194,16 +194,16 @@
     "types": [
       "novel-extract"
     ],
-    "entryFee": 26,
-    "entryFeeNote": "~£26 per entry",
-    "entryFeeSort": 26,
-    "prize": "£3,000 + agent interest",
-    "prizeSort": 3000,
+    "entryFee": 33,
+    "entryFeeNote": "£33 per entry",
+    "entryFeeSort": 33,
+    "prize": "£5,000 + agent interest",
+    "prizeSort": 5000,
     "ageRestriction": null,
     "genderRestriction": null,
-    "deadline": "Varies annually",
-    "deadlineMonth": 0,
-    "description": "International contest for unpublished novelists worldwide. Submit the first 5,000 words plus a one-page synopsis. Known for supporting emerging writers and connecting them to the publishing industry.",
+    "deadline": "31 May 2026",
+    "deadlineMonth": 5,
+    "description": "International contest for unagented novelists worldwide. Submit the first 5,000 words plus a one-page synopsis. Welcomes both unpublished and self-published authors. Known for supporting emerging writers and connecting them to the publishing industry.",
     "url": "https://bathnovelaward.co.uk",
     "notes": "Shortlisted entries receive manuscript feedback."
   },
@@ -3075,5 +3075,28 @@
     "description": "Channel 4 runs recurring screenwriting talent schemes in partnership with ScreenSkills, including the 4Stories initiative and writer attachment programmes. Selected writers may receive paid placements on productions and direct commissioning opportunities. One of the UK's most direct routes from competition to professional credit.",
     "url": "https://www.channel4.com/4producers/find-talent",
     "notes": "UK writers. Schemes vary year to year — check Channel 4 Producers site for current openings."
+  },
+  {
+    "id": 160,
+    "name": "Bath Children's Novel Award",
+    "org": "Bath Novel Award",
+    "country": "UK",
+    "international": true,
+    "prestige": "high",
+    "types": [
+      "novel-extract"
+    ],
+    "entryFee": 33,
+    "entryFeeNote": "£33 per entry",
+    "entryFeeSort": 33,
+    "prize": "£5,000 + agent interest",
+    "prizeSort": 5000,
+    "ageRestriction": null,
+    "genderRestriction": null,
+    "deadline": "30 Nov 2026",
+    "deadlineMonth": 11,
+    "description": "Sister award to the Bath Novel Award, open to unagented writers of children's fiction worldwide — both unpublished and self-published authors welcome. Submit the first 5,000 words plus a one-page synopsis. Run by the same team with the same rigorous industry-connected judging process.",
+    "url": "https://bathnovelaward.co.uk/childrens-novel-award/",
+    "notes": "Shortlisted entries receive manuscript feedback."
   }
 ]
