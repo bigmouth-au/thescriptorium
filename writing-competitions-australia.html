@@ -12,20 +12,13 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.thescriptorium.com.au/Favicon.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Writing Competitions Australia 2026 — Free Directory | The Scriptorium">
-<meta name="twitter:description" content="Curated directory of Australian writing competitions and literary prizes for 2026. Short story, poetry, novel, flash fiction and screenplay competitions. Free to search, updated regularly.">
 <link rel="icon" type="image/png" href="/Favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-978827DY1C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-978827DY1C');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-978827DY1C');</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,6 +26,7 @@
   "name": "Writing Competitions Australia 2026",
   "description": "Curated directory of Australian writing competitions and literary prizes for 2026. Short story, poetry, novel, flash fiction and screenplay competitions. Free to search, updated regularly.",
   "url": "https://www.thescriptorium.com.au/writing-competitions-australia.html",
+  "dateModified": "2026-03-23",
   "publisher": {
     "@type": "Organization",
     "name": "The Scriptorium",
@@ -58,62 +52,76 @@
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 
+/* NAV */
+.site-nav{background:rgba(248,246,246,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:500}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;height:60px;gap:.25rem}
+.nav-brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;flex-shrink:0;margin-right:.5rem}
+.nav-brand-icon{background:var(--primary);color:white;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
+.nav-brand:hover .nav-brand-icon{transform:rotate(6deg)}
+.nav-brand-name{font-size:1rem;font-weight:900;color:var(--text);letter-spacing:-.02em;white-space:nowrap}
+.nav-links{display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{font-size:.8rem;font-weight:600;color:var(--text-2);text-decoration:none;padding:.4rem .6rem;border-radius:7px;white-space:nowrap;transition:all .15s;flex-shrink:0}
+.nav-link:hover{color:var(--text);background:var(--surface2)}
+.nav-link.active{color:var(--primary);background:var(--primary-light)}
+.nav-cta{flex-shrink:0;background:var(--primary);color:white;font-size:.8rem;font-weight:700;text-decoration:none;padding:.45rem 1rem;border-radius:8px;margin-left:.5rem;white-space:nowrap;transition:background .15s}
+.nav-cta:hover{background:var(--primary-hover)}
+.nav-hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto;border-radius:6px}
+.nav-hamburger span{display:block;width:20px;height:2px;background:var(--text-2);border-radius:2px;transition:all .2s}
+
 /* HERO */
 .hero{background:var(--primary);padding:3.25rem 2rem 2.75rem;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 70%);pointer-events:none}
 .hero-eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.875rem}
 .hero h1{font-size:clamp(1.75rem,4.5vw,2.75rem);font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:.875rem;line-height:1.1}
-.hero p{font-size:.9375rem;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto .75rem;line-height:1.65}
-.hero-country{font-size:.8rem;color:rgba(255,255,255,.55)!important;margin-top:.25rem}
-.hero-country strong{color:rgba(255,255,255,.8)}
+.hero-intro{font-size:.9375rem;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto .75rem;line-height:1.65}
+.hero-sub{font-size:.8rem;color:rgba(255,255,255,.55);margin-top:.25rem}
+.hero-sub strong{color:rgba(255,255,255,.8)}
 .hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1.75rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.15)}
 .hero-stat{text-align:center}
 .hero-stat-num{font-size:2rem;font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1}
 .hero-stat-label{font-size:.67rem;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
 
-/* TAB NAV (Competitions / Resources) */
+/* PAGE TABS */
 .page-tabs{background:var(--surface);border-bottom:1px solid var(--border)}
-.page-tabs-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;gap:0}
+.page-tabs-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex}
 .page-tab{font-family:'Inter',sans-serif;font-size:.875rem;font-weight:700;color:var(--text-3);background:none;border:none;border-bottom:3px solid transparent;padding:.875rem 1.25rem .75rem;cursor:pointer;transition:all .15s;white-space:nowrap}
 .page-tab:hover{color:var(--text-2)}
 .page-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
 
-/* FILTER BAR */
-.filters-bar{background:var(--surface2);border-bottom:1px solid var(--border);padding:.625rem 1.5rem;position:sticky;top:60px;z-index:100}
-.filters-inner{max-width:1200px;margin:0 auto;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+/* FILTER BARS */
+.filter-bar{background:var(--surface2);border-bottom:1px solid var(--border);padding:.625rem 1.5rem;position:sticky;top:60px;z-index:100}
+.filter-bar-inner{max-width:1200px;margin:0 auto;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 .filter-label{font-size:.7rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;margin-right:.25rem;white-space:nowrap;flex-shrink:0}
 .filter-btn{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;padding:.35rem .9rem;border:1px solid var(--border);border-radius:99px;background:var(--surface);color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap}
 .filter-btn:hover{border-color:var(--border-strong);background:var(--surface)}
 .filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:var(--shadow-primary)}
-.search-input{font-family:'Inter',sans-serif;font-size:.85rem;padding:.38rem .9rem;border:1px solid var(--border);border-radius:99px;background:var(--bg);color:var(--text);outline:none;width:200px;transition:border-color .2s;margin-left:auto}
-.search-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(236,73,19,.1);background:var(--surface)}
-
-/* RES FILTER */
-.res-filters{background:var(--surface2);border-bottom:1px solid var(--border);padding:.625rem 1.5rem}
-.res-filters-inner{max-width:1200px;margin:0 auto;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-.res-filter-btn{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;padding:.35rem .9rem;border:1px solid var(--border);border-radius:99px;background:var(--surface);color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap}
-.res-filter-btn:hover{border-color:var(--border-strong)}
-.res-filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-.res-filter-btn.fest-btn{border-color:rgba(26,122,110,.3);color:var(--teal)}
-.res-filter-btn.fest-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.filter-btn.fest-btn{border-color:rgba(26,122,110,.3);color:var(--teal)}
+.filter-btn.fest-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.search-box{font-family:'Inter',sans-serif;font-size:.85rem;padding:.38rem .9rem;border:1px solid var(--border);border-radius:99px;background:var(--bg);color:var(--text);outline:none;width:200px;transition:border-color .2s;margin-left:auto}
+.search-box:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(236,73,19,.1);background:var(--surface)}
 
 /* MAIN */
 .main{max-width:1200px;margin:0 auto;padding:2.25rem 1.5rem 5rem}
 .section{display:none}.section.active{display:block}
-.results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:.75rem}
+.results-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:.75rem}
 .results-count{font-size:.9rem;font-weight:700;color:var(--text)}
 .results-count strong{color:var(--primary)}
 
-/* GRID */
+/* CARD GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
-
-/* CARD */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.375rem;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s;position:relative;overflow:hidden}
 .card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px);border-color:rgba(236,73,19,.2)}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius) var(--radius) 0 0}
 .prestige-high::before{background:var(--text)}
 .prestige-mid::before{background:var(--primary)}
 .prestige-low::before{background:var(--border-strong)}
+.resource-festival::before{background:var(--teal)}
+.resource-festival:hover{border-color:rgba(26,122,110,.25)}
+.resource-festival:hover .card-title{color:var(--teal)}
+.card.hidden{display:none}
+
+/* BADGES */
 .card-badges{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.75rem}
 .badge{font-size:.67rem;font-weight:700;padding:.18rem .5rem;border-radius:4px;letter-spacing:.02em}
 .badge-country{background:var(--surface2);color:var(--text-2);border:1px solid var(--border)}
@@ -122,6 +130,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .badge-prestige-high{background:var(--text);color:white}
 .badge-prestige-mid{background:var(--primary-light);color:var(--primary)}
 .badge-prestige-low{background:var(--surface2);color:var(--text-3);border:1px solid var(--border)}
+
+/* CARD BODY */
 .card-title{font-size:1.0625rem;font-weight:800;line-height:1.3;color:var(--text);margin-bottom:.2rem;letter-spacing:-.01em;transition:color .15s}
 .card:hover .card-title{color:var(--primary)}
 .card-org{font-size:.75rem;color:var(--text-3);margin-bottom:.75rem}
@@ -132,37 +142,40 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .meta-item{display:flex;flex-direction:column;gap:.2rem}
 .meta-label{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
 .meta-val{font-size:.8125rem;font-weight:600;color:var(--text)}
-.meta-val.prize,.meta-val.free{color:var(--green)}
+.meta-val.prize,.meta-val.free,.free-note{color:var(--green)}
 .card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.875rem;border-top:1px solid var(--border);gap:.5rem}
 .deadline-chip{font-size:.75rem;color:var(--text-3)}
 .card-link{display:flex;align-items:center;gap:.3rem;font-size:.8rem;font-weight:700;color:var(--primary);text-decoration:none;padding:.35rem .875rem;border-radius:var(--radius-sm);background:var(--primary-light);transition:all .15s;white-space:nowrap}
 .card-link:hover{background:var(--primary);color:white}
-
-/* FESTIVAL RESOURCE CARDS */
-.resource-festival::before{background:var(--teal)}
-.resource-festival:hover{border-color:rgba(26,122,110,.25)}
-.resource-festival:hover .card-title{color:var(--teal)}
 .res-link{color:var(--teal);background:var(--teal-light)}
 .res-link:hover{background:var(--teal);color:white}
 
-/* INLINE NL */
-.nl-inline{grid-column:1/-1;background:var(--bg-dark);border-radius:var(--radius);padding:2.25rem;text-align:center;margin:1rem 0}
-.nl-inline h3{font-size:1.25rem;font-weight:900;color:white;margin-bottom:.375rem;letter-spacing:-.02em}
-.nl-inline p{font-size:.875rem;color:rgba(255,255,255,.45);margin-bottom:1.25rem}
-.nl-inline-form{display:flex;gap:.5rem;max-width:440px;margin:0 auto .5rem}
-.nl-inline-form input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);padding:.6rem 1rem;font-family:'Inter',sans-serif;font-size:.875rem;color:white;outline:none;min-width:0}
-.nl-inline-form input::placeholder{color:rgba(255,255,255,.3)}
-.nl-inline-form input:focus{border-color:var(--primary)}
-.nl-inline-form button{background:var(--primary);color:white;border:none;padding:.6rem 1.25rem;border-radius:var(--radius-sm);font-family:'Inter',sans-serif;font-size:.875rem;font-weight:700;cursor:pointer;transition:background .15s;white-space:nowrap}
-.nl-inline-form button:hover{background:var(--primary-hover)}
-.nl-inline-success{display:none;color:rgba(255,255,255,.7);font-size:.9rem;margin-top:.75rem}
+/* NO RESULTS */
+.no-results{grid-column:1/-1;text-align:center;padding:3rem 2rem;color:var(--text-3);font-size:.9rem;display:none}
+.no-results a{color:var(--primary);font-weight:700;text-decoration:none}
 
-/* INFO */
+/* INFO SECTION */
 .info-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-top:3rem}
 .info-section h2{font-size:1.375rem;font-weight:900;letter-spacing:-.02em;color:var(--text);margin-bottom:.875rem}
 .info-section p{font-size:.875rem;color:var(--text-2);line-height:1.75;margin-bottom:.875rem}
 .info-section p:last-child{margin-bottom:0}
 .info-section a{color:var(--primary);font-weight:700;text-decoration:none}
+
+/* NEWSLETTER */
+.nl-band{background:var(--bg-dark);border-radius:var(--radius);padding:2.25rem;text-align:center;margin-top:1.5rem}
+.nl-band h3{font-size:1.25rem;font-weight:900;color:white;margin-bottom:.375rem;letter-spacing:-.02em}
+.nl-band p{font-size:.875rem;color:rgba(255,255,255,.45);margin-bottom:1.25rem}
+.nl-form{display:flex;gap:.5rem;max-width:440px;margin:0 auto .5rem}
+.nl-form input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);padding:.6rem 1rem;font-family:'Inter',sans-serif;font-size:.875rem;color:white;outline:none;min-width:0}
+.nl-form input::placeholder{color:rgba(255,255,255,.3)}
+.nl-form input:focus{border-color:var(--primary)}
+.nl-form button{background:var(--primary);color:white;border:none;padding:.6rem 1.25rem;border-radius:var(--radius-sm);font-family:'Inter',sans-serif;font-size:.875rem;font-weight:700;cursor:pointer;transition:background .15s;white-space:nowrap}
+.nl-form button:hover{background:var(--primary-hover)}
+.nl-country{display:block;width:100%;max-width:440px;margin:.5rem auto 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-sm);padding:.45rem .75rem;font-family:'Inter',sans-serif;font-size:.8rem;color:rgba(255,255,255,.6);outline:none;cursor:pointer}
+.nl-country option{background:#221510;color:white}
+.nl-country:focus{border-color:var(--primary)}
+.nl-hint{font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.5rem}
+.nl-success{display:none;color:rgba(255,255,255,.7);font-size:.9rem;margin-top:.75rem}
 
 /* CTA */
 .cta-band{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;text-align:center;margin-top:1.5rem}
@@ -170,83 +183,1804 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .cta-band p{font-size:.875rem;color:var(--text-2);margin-bottom:1.25rem}
 .btn{display:inline-block;background:var(--primary);color:#fff;font-family:'Inter',sans-serif;font-size:.875rem;font-weight:700;padding:.75rem 1.75rem;border-radius:var(--radius-sm);text-decoration:none;transition:all .15s;box-shadow:var(--shadow-primary)}
 .btn:hover{background:var(--primary-hover);transform:translateY(-1px)}
-.suggest-bar{text-align:center;padding:1.25rem 0 .25rem;border-top:1px solid var(--border);margin-top:.5rem}
-.suggest-bar p{font-size:.8125rem;color:var(--text-3)}
-.suggest-bar a{color:var(--primary);font-weight:700;text-decoration:none}
+.suggest-note{text-align:center;padding:1.25rem 0 .25rem;border-top:1px solid var(--border);margin-top:.5rem;font-size:.8125rem;color:var(--text-3)}
+.suggest-note a{color:var(--primary);font-weight:700;text-decoration:none}
 
-@media(max-width:768px){
+/* FOOTER */
+.site-footer{background:var(--bg-dark);color:rgba(255,255,255,.45);padding:3.5rem 1.5rem 2.5rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:2rem}
+.footer-logo{display:flex;align-items:center;gap:.5rem;margin-bottom:.875rem}
+.footer-logo-icon{background:var(--primary);color:white;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+.footer-logo-name{font-size:1rem;font-weight:900;color:white}
+.footer-desc{font-size:.8rem;line-height:1.7;color:rgba(255,255,255,.32);max-width:230px;margin-bottom:1.5rem}
+.footer-nl-label{font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:.5rem}
+.footer-nl-form{display:flex;gap:.375rem;max-width:260px;margin-bottom:.5rem}
+.footer-nl-form input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.5rem .75rem;font-family:'Inter',sans-serif;font-size:.8rem;color:white;outline:none;min-width:0}
+.footer-nl-form input::placeholder{color:rgba(255,255,255,.25)}
+.footer-nl-form input:focus{border-color:var(--primary)}
+.footer-nl-form button{background:var(--primary);color:white;border:none;padding:.5rem .875rem;border-radius:7px;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:background .15s;white-space:nowrap}
+.footer-nl-form button:hover{background:var(--primary-hover)}
+.footer-nl-success{display:none;font-size:.8rem;color:rgba(255,255,255,.55);margin-top:.375rem}
+.footer-col h4{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col a{font-size:.8125rem;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s}
+.footer-col a:hover{color:white}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-bottom p{font-size:.72rem;color:rgba(255,255,255,.22);line-height:1.6}
+.footer-legal{display:flex;gap:1.25rem}
+.footer-legal a{font-size:.72rem;color:rgba(255,255,255,.28);text-decoration:none}
+.footer-legal a:hover{color:rgba(255,255,255,.6)}
+
+/* RESPONSIVE */
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  .nav-hamburger{display:flex}
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:white;border-bottom:1px solid var(--border);padding:.75rem 1rem;flex-direction:column;gap:.25rem;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .nav-links.open{display:flex}
+  .nav-cta{display:none}
   .hero{padding:2.5rem 1rem 2rem}
-  .filters-bar,.res-filters{padding:.5rem 1rem;top:60px}
-  .search-input{width:100%;margin-left:0}
+  .filter-bar{padding:.5rem 1rem}
+  .search-box{width:100%;margin-left:0}
   .main{padding:1.5rem 1rem 3rem}
   .grid{grid-template-columns:1fr}
-  .nl-inline-form{flex-direction:column}
+  .nl-form{flex-direction:column}
+  .footer-top{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;text-align:center}
 }
 </style>
 </head>
-<body data-page="australia">
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-brand-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v7l-2.5-1.5L12 11V4h5zm-5 16H6V4h4v9l3.5-2.1L17 13V4h1v16h-6z"/>
+        </svg>
+      </div>
+      <span class="nav-brand-name">The Scriptorium</span>
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links"><a href="/" class="nav-link">Home</a><a href="/writing-competitions-australia.html" class="nav-link  active">🇦🇺 Australia</a><a href="/writing-competitions-uk.html" class="nav-link">🇬🇧 United Kingdom</a><a href="/writing-competitions-usa.html" class="nav-link">🇺🇸 United States</a><a href="/writing-competitions-canada.html" class="nav-link">🇨🇦 Canada</a><a href="/writing-competitions-ireland.html" class="nav-link">🇮🇪 Ireland</a><a href="/writing-competitions-new-zealand.html" class="nav-link">🇳🇿 New Zealand</a><a href="/writing-competitions-2026.html" class="nav-link">📅 2026</a><a href="/submit-competition.html" class="nav-link">+ Submit</a></div>
+    <a href="#newsletter" class="nav-cta">Subscribe free →</a>
+  </div>
+</nav>
 
 <section class="hero">
   <p class="hero-eyebrow">The Scriptorium &middot; Free Directory</p>
   <h1>Writing Competitions Australia 2026</h1>
-  <p>The most comprehensive free directory of Australian writing competitions and literary prizes — updated regularly, searchable by type.</p>
-  <p class="hero-country">Competitions &amp; prizes for writers in <strong>Australia</strong> and open internationally.</p>
+  <p class="hero-intro">The most comprehensive free directory of Australian writing competitions and literary prizes — updated regularly, searchable by type.</p>
+  <p class="hero-sub">Competitions &amp; prizes for writers in <strong>Australia</strong> and open internationally.</p>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-num" id="stat-total">&mdash;</div><div class="hero-stat-label">Competitions</div></div>
-    <div class="hero-stat"><div class="hero-stat-num" id="stat-free">&mdash;</div><div class="hero-stat-label">Free to Enter</div></div>
-    <div class="hero-stat"><div class="hero-stat-num" id="stat-open">&mdash;</div><div class="hero-stat-label">Open Now</div></div>
-    <div class="hero-stat"><div class="hero-stat-num" id="stat-festivals">&mdash;</div><div class="hero-stat-label">Festivals</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">88</div><div class="hero-stat-label">Competitions</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">39</div><div class="hero-stat-label">Free to Enter</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">83</div><div class="hero-stat-label">Open Now</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">Festivals</div></div>
   </div>
 </section>
 
-<!-- PAGE TABS -->
 <div class="page-tabs">
   <div class="page-tabs-inner">
     <button class="page-tab active" id="tab-comps" onclick="showTab('comps')">Competitions &amp; Prizes</button>
-    <button class="page-tab" id="tab-resources" onclick="showTab('resources')">Resources &amp; Festivals</button>
+    <button class="page-tab" id="tab-res" onclick="showTab('res')">Resources &amp; Festivals</button>
   </div>
 </div>
 
-<!-- COMPETITIONS FILTER BAR -->
-<div class="filters-bar" id="filter-bar-comps">
-  <div class="filters-inner">
+<div class="filter-bar" id="filter-bar-comps">
+  <div class="filter-bar-inner">
     <span class="filter-label">Type:</span>
-    <button class="filter-btn active" data-type="all">All</button>
-    <button class="filter-btn" data-type="short-story">Short Story</button>
-    <button class="filter-btn" data-type="poetry">Poetry</button>
-    <button class="filter-btn" data-type="novel">Complete Novel</button>
-    <button class="filter-btn" data-type="novel-extract">Novel Extract</button>
-    <button class="filter-btn" data-type="flash">Flash Fiction</button>
-    <button class="filter-btn" data-type="screenplay">Screenplay</button>
-    <input type="search" id="search-input" class="search-input" placeholder="Search&hellip;" aria-label="Search competitions">
+    <button class="filter-btn comp-filter-btn  active" data-type="all">All</button>
+<button class="filter-btn comp-filter-btn" data-type="short-story">Short Story</button>
+<button class="filter-btn comp-filter-btn" data-type="novel">Complete Novel</button>
+<button class="filter-btn comp-filter-btn" data-type="novel-extract">Novel Extract</button>
+<button class="filter-btn comp-filter-btn" data-type="flash">Flash Fiction</button>
+<button class="filter-btn comp-filter-btn" data-type="poetry">Poetry</button>
+<button class="filter-btn comp-filter-btn" data-type="screenplay">Screenplay</button>
+    <input type="search" id="search-box" class="search-box" placeholder="Search&hellip;" aria-label="Search competitions">
   </div>
 </div>
 
-<!-- RESOURCES FILTER BAR -->
-<div class="res-filters" id="filter-bar-resources" style="display:none">
-  <div class="res-filters-inner">
+<div class="filter-bar" id="filter-bar-res" style="display:none">
+  <div class="filter-bar-inner">
     <span class="filter-label">Filter:</span>
-    <button class="res-filter-btn active" onclick="filterRes('all',this)">All</button>
-    <button class="res-filter-btn" onclick="filterRes('writers-centre',this)">Writers Centres</button>
-    <button class="res-filter-btn" onclick="filterRes('association',this)">Associations</button>
-    <button class="res-filter-btn" onclick="filterRes('training',this)">Training</button>
-    <button class="res-filter-btn fest-btn" onclick="filterRes('festival',this)">🎪 Festivals &amp; Events</button>
+    <button class="filter-btn res-filter-btn active" data-type="all">All</button>
+    <button class="filter-btn res-filter-btn" data-type="writers-centre">Writers Centres</button>
+    <button class="filter-btn res-filter-btn" data-type="association">Associations</button>
+    <button class="filter-btn res-filter-btn" data-type="training">Training</button>
+    <button class="filter-btn res-filter-btn fest-btn" data-type="festival">🎪 Festivals &amp; Events</button>
   </div>
 </div>
 
 <main class="main">
 
-  <!-- COMPETITIONS SECTION -->
   <div class="section active" id="section-comps">
-    <div class="results-header">
-      <p class="results-count" id="results-count">Loading&hellip;</p>
+    <div class="results-bar">
+      <p class="results-count" id="comp-count">Showing <strong>88</strong> competitions</p>
     </div>
-    <div class="grid" id="grid"></div>
+    <div class="grid" id="comp-grid">
+      <div class="card prestige-mid" data-types="short-story" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Bristol Short Story Prize</div>
+  <div class="card-org">Bristol Short Story Prize</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Internationally respected short story prize run since 2008. Up to 4,000 words. Open to writers worldwide. All shortlisted writers receive £50 and publication in the…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£9 per story</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£1,500 (1st) + anthology publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 31 Jan annually</span>
+    <a class="card-link" href="https://bssp.blogs.bristol.ac.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story" data-country="International" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🌐 International</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">International Booker Prize</div>
+  <div class="card-org">The Booker Prize Foundation</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Celebrates the best fiction translated into English and published in the UK or Ireland. The £50,000 prize is shared equally between author and translator. Short stor…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£50,000 (split author/translator)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jan/Mar 2026</span>
+    <a class="card-link" href="https://thebookerprizes.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="short-story,poetry" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Iowa Review Awards</div>
+  <div class="card-org">The Iowa Review</div>
+  <div class="card-types"><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Annual awards from one of America&#x27;s most prestigious literary journals — published since 1970 by the University of Iowa. Three categories: poetry, fiction, and creat…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">$20 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">$1,500</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jan 2026</span>
+    <a class="card-link" href="https://iowareview.org/contests" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="poetry" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Iowa Review Awards — Poetry</div>
+  <div class="card-org">The Iowa Review</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Annual contest from one of America&#x27;s most distinguished literary journals, founded at the University of Iowa in 1969. Open internationally. Submit up to 3 poems (8 p…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">US$20 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">US$1,500 + publication in The Iowa Review</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jan annually</span>
+    <a class="card-link" href="https://iowareview.org" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Miles Franklin Literary Award</div>
+  <div class="card-org">Perpetual Trustees Australia</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">Australia&#x27;s most prestigious literary award for a novel that presents Australian life in any of its phases. Publisher-submitted. Winners include Patrick White, Tim W…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$60,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jan annually</span>
+    <a class="card-link" href="https://www.perpetual.com.au/milesfranklin" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">American Short Fiction Prize</div>
+  <div class="card-org">American Short Fiction</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Prize from one of America&#x27;s most distinguished literary journals. Stories up to 12,000 words. Open internationally. Winner receives US$1,000 and publication. America…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">US$20 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">US$1,000 + publication in American Short Fiction</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb annually</span>
+    <a class="card-link" href="https://americanshortfiction.org" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="screenplay" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">BlueCat Screenplay Competition</div>
+  <div class="card-org">BlueCat</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Founded in 1998 by screenwriter Gordy Hoffman, BlueCat is particularly valued for the written feedback every entrant receives on their script — not just finalists. A…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $55 — includes written feedback on your script</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">USD $10,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb 2027</span>
+    <a class="card-link" href="https://www.bluecatscreenplay.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story,poetry" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Cúirt New Writing Prize</div>
+  <div class="card-org">Cúirt International Festival of Literature</div>
+  <div class="card-types"><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">An annual prize for emerging writers run by the prestigious Cúirt International Festival of Literature in Galway. Four categories: short fiction, poetry, essay, and…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">€12 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€500</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb 2026</span>
+    <a class="card-link" href="https://www.cuirt.ie/cuirt-new-writing-prize-2026/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="flash" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Fish Publishing Flash Fiction Prize</div>
+  <div class="card-org">Fish Publishing</div>
+  <div class="card-types"><span class="type-chip">Flash Fiction</span></div>
+  <p class="card-desc">Free-entry flash fiction prize. Max 300 words. Open internationally. Top poem earns €1,000. Winners published in the Fish Anthology. A prestigious platform for write…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€1,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 28 Feb annually</span>
+    <a class="card-link" href="https://www.fishpublishing.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Indie Book Awards — Fiction</div>
+  <div class="card-org">Australian Independent Booksellers&#x27; Association</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">Voted by Australia&#x27;s independent booksellers, the Indie Book Awards are among the most commercially significant prizes in Australian publishing. The fiction winner —…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">Recognition + major bookselling support</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb 2026</span>
+    <a class="card-link" href="https://indiebookawards.com.au/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="screenplay" data-country="International" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🌐 International</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">NYC Midnight Screenwriting Challenge</div>
+  <div class="card-org">NYC Midnight</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">A timed, prompt-based screenwriting competition running three rounds. Writers receive a genre, subject, and character assignment and must write an original short scr…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $55 entry fee</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">USD $2,500 + prizes</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb 2027</span>
+    <a class="card-link" href="https://www.nycmidnight.com/scc" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-low" data-types="short-story" data-country="USA" data-prestige="low">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-low">Emerging</span>
+  </div>
+  <div class="card-title">Next Generation Short Story Awards</div>
+  <div class="card-org">Short Story Awards</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">International short story competition with multiple genre categories. Stories must be no longer than 5,000 words. No sexual, political or hate speech content accepte…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">US$25 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">US$1,500 (1st), US$750 (2nd)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 26 Feb 2026</span>
+    <a class="card-link" href="https://shortstoryawards.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Prime Minister&#x27;s Literary Awards — Fiction</div>
+  <div class="card-org">Creative Australia / Australian Government</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">Australia&#x27;s richest literary prize, with AU$80,000 for the winner and AU$5,000 for each shortlisted entry. Open to Australian citizens or permanent residents. First…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$80,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb annually</span>
+    <a class="card-link" href="https://creative.gov.au/investments-opportunities/prime-ministers-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Prime Minister&#x27;s Literary Awards — Poetry</div>
+  <div class="card-org">Creative Australia / Australian Government</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Australia&#x27;s most valuable poetry prize, awarding AU$80,000 to the winning collection. One of six categories in Australia&#x27;s most prestigious literary awards programme…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$80,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb annually</span>
+    <a class="card-link" href="https://creative.gov.au/investments-opportunities/prime-ministers-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story,poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">The Stella Prize</div>
+  <div class="card-org">The Stella Prize</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Australia&#x27;s premier literary prize for women and non-binary writers. AU$60,000 for the winner of a book-length work of any genre — fiction, nonfiction, or poetry. Pu…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$60,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Feb annually</span>
+    <a class="card-link" href="https://thestellaprize.com.au" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">AWG Monte Miller Awards</div>
+  <div class="card-org">Australian Writers&#x27; Guild</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Annual AWG award for unproduced scripts in two categories: Long Form (over 30 minutes) and Short Form (under 30 minutes), across all genres and formats. Winners anno…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AWG recognition + Pathways Showcase</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Mar 2026</span>
+    <a class="card-link" href="https://awg.com.au/competitions/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="flash" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Bath Flash Fiction Award</div>
+  <div class="card-org">Bath Flash Fiction Award</div>
+  <div class="card-types"><span class="type-chip">Flash Fiction</span></div>
+  <p class="card-desc">One of the world&#x27;s most reputable flash fiction prizes. Up to 300 words. Open internationally. Two rounds per year with £1,000 first prize each round. All shortliste…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£8 per flash (up to 300 words)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£1,000 (winner) + anthology publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Mar &amp; Oct annually (2 rounds)</span>
+    <a class="card-link" href="https://bathflashfictionaward.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Newcastle Poetry Prize</div>
+  <div class="card-org">Newcastle Writers Festival</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Australia&#x27;s largest open poetry prize, awarding AU$15,000 for the best single poem. Open internationally. Winning poem published in the annual anthology alongside sh…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">AU$10 per poem</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$15,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Mar annually</span>
+    <a class="card-link" href="https://newcastlewritersfestival.com.au/newcastle-poetry-prize" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Peter Carey Short Story Award</div>
+  <div class="card-org">Overland Literary Journal</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Free-entry short story prize open to all Australian residents. Stories between 2,000 and 3,000 words. Winner and runner-up both published in Overland literary journa…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$2,000 + publication in Overland</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Mar annually</span>
+    <a class="card-link" href="https://overland.org.au" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel,short-story" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Rubery Book Award</div>
+  <div class="card-org">Rubery Book Awards</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Prestigious international competition specifically for independently published authors and small presses. Recognises quality books outside traditional publishing. No…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">Varies by country (~£35)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£2,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 31 Mar annually</span>
+    <a class="card-link" href="https://ruberybookaward.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">WriteMentor Novel &amp; Picture Book Award</div>
+  <div class="card-org">WriteMentor / Darley Anderson Agency</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">An annual award for unagented, unpublished writers of children&#x27;s, YA and adult fiction, run in partnership with Darley Anderson Agency. Now in its eighth year with a…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£12 (£24 with feedback)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£500 + agent consultation</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Mar 2026</span>
+    <a class="card-link" href="https://write-mentor.com/writementor-writing-awards/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">AWG Emerging Writers&#x27; Awards</div>
+  <div class="card-org">Australian Writers&#x27; Guild</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Australia&#x27;s most important entry-level screen competition. Open to AWG Associate and Student members with an unproduced script across film, television, theatre, audi…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AUD $10,000 (shared)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://awg.com.au/emerging-writers-awards/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">AWG John Hinde Award</div>
+  <div class="card-org">Australian Writers&#x27; Guild</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Recognises the best science-fiction writing for feature film, television, web series, audio, and interactive media. Funded by a bequest from the late Australian film…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AUD $10,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://awg.com.au/competitions/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="poetry" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">BOMB Magazine Poetry Contest</div>
+  <div class="card-org">BOMB Magazine</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">An annual poetry contest from BOMB — one of New York&#x27;s most respected arts and culture magazines, known for its artist-to-artist interviews and experimental literary…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">$20</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">$1,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://bombmagazine.org/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="short-story" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Flannery O&#x27;Connor Award for Short Fiction</div>
+  <div class="card-org">University of Georgia Press</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">One of America&#x27;s most distinguished prizes for a short story collection manuscript, published by the University of Georgia Press since 1983. Open internationally for…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">$30</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">$1,000 + publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://ugapress.org/submitting/flannery-oconnor-award/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Griffith Review Emerging Voices Competition</div>
+  <div class="card-org">Griffith Review / Griffith University</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">An annual competition for emerging Australian and New Zealand writers of fiction and creative non-fiction. Up to four winners share a $20,000 prize pool and are publ…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">A$25 (A$15 for subscribers)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$20,000 (shared)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://www.griffithreview.com/griffith-review-emerging-voices-competition/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Queensland Literary Awards — David Unaipon Award (Unpublished Indigenous Writing)</div>
+  <div class="card-org">State Library of Queensland / UQP</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Awarded to the best unpublished manuscript by an Aboriginal or Torres Strait Islander writer who has not yet had a book published. The winner receives $15,000 and a…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$15,000 + publishing contract</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://www.slq.qld.gov.au/get-involved/awards-and-fellowships/queensland-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Queensland Literary Awards — Fiction</div>
+  <div class="card-org">State Library of Queensland</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Part of one of Australia&#x27;s most generous literary award suites, administered by the State Library of Queensland. Open to all Australian citizens and permanent reside…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$25,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://www.slq.qld.gov.au/get-involved/awards-and-fellowships/queensland-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Queensland Literary Awards — Poetry</div>
+  <div class="card-org">State Library of Queensland</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">A flagship poetry prize within the Queensland Literary Awards. Open to Australian citizens and permanent residents for a published poetry collection. One of Australi…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$25,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Apr 2026</span>
+    <a class="card-link" href="https://www.slq.qld.gov.au/get-involved/awards-and-fellowships/queensland-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Austin Film Festival Screenplay Competition</div>
+  <div class="card-org">Austin Film Festival</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Known as the &#x27;writer&#x27;s festival&#x27;, AFF runs one of the world&#x27;s largest screenwriting conferences alongside its competition. Categories include feature, short, pilot,…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $50 early / $65 standard (feature)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">USD $5,000 + conference access + industry networking</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: May 2026</span>
+    <a class="card-link" href="https://austinfilmfestival.com/submit/screenplay-competition/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="short-story" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Australian Book Review — Elizabeth Jolley Short Story Prize</div>
+  <div class="card-org">Australian Book Review</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">A significant cash prize for the best unpublished short story. Open to Australian and international writers. 2,000–5,000 words. Winning and shortlisted stories publi…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">AU$30 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$6,000 (1st), AU$4,000 (2nd)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: May 2025</span>
+    <a class="card-link" href="https://www.australianbookreview.com.au" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel-extract" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Bath Novel Award</div>
+  <div class="card-org">Bath Novel Award</div>
+  <div class="card-types"><span class="type-chip">Novel Extract</span></div>
+  <p class="card-desc">International contest for unagented novelists worldwide. Submit the first 5,000 words plus a one-page synopsis. Welcomes both unpublished and self-published authors.…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£33 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£5,000 + agent interest</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 31 May 2026</span>
+    <a class="card-link" href="https://bathnovelaward.co.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="flash" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Bridport Prize — Flash Fiction</div>
+  <div class="card-org">Bridport Arts Centre</div>
+  <div class="card-types"><span class="type-chip">Flash Fiction</span></div>
+  <p class="card-desc">250 words max. Open to writers aged 16+ worldwide. One of the most competitive flash fiction prizes. Winners published in the annual Bridport anthology.</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£12 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£1,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 31 May 2026</span>
+    <a class="card-link" href="https://bridportprize.org.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel-extract" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Bridport Prize — Novel Award</div>
+  <div class="card-org">Bridport Arts Centre (Peggy Chapman-Andrews)</div>
+  <div class="card-types"><span class="type-chip">Novel Extract</span></div>
+  <p class="card-desc">The Peggy Chapman-Andrews First Novel Award. Submit 5,000–8,000 words from opening chapters plus a 300-word synopsis. A win or shortlist is one of the most powerful…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£26 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£1,500</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 31 May 2026</span>
+    <a class="card-link" href="https://bridportprize.org.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Bridport Prize — Poetry</div>
+  <div class="card-org">Bridport Arts Centre</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">One of the most coveted poetry prizes in the English-speaking world. Up to 42 lines. Open to all writers aged 16+ worldwide. Winners published in the Bridport anthol…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£13 per poem</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£5,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 31 May 2026</span>
+    <a class="card-link" href="https://bridportprize.org.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="short-story" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Bridport Prize — Short Story</div>
+  <div class="card-org">Bridport Arts Centre</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">One of the world&#x27;s most respected writing competitions. Open to writers worldwide aged 16+. Max 5,000 words. Winners published in the annual Bridport anthology. Stro…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£15 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£5,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 31 May 2026</span>
+    <a class="card-link" href="https://bridportprize.org.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">F(r)iction Short Story Contest</div>
+  <div class="card-org">Tethered by Letters</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Seeks bold, original writing that challenges norms and takes creative risks. Emotional stories with fresh perspectives. No AI-generated work accepted. International…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">US$15 per story</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">US$1,000 + publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 2 May 2026</span>
+    <a class="card-link" href="https://frictionlit.org" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Lorian Hemingway Short Story Competition</div>
+  <div class="card-org">Lorian Hemingway Short Story Competition</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Established 1981 by the granddaughter of Ernest Hemingway, this prestigious competition has over 40 years of history. Focuses on emerging voices in short fiction. Op…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">US$15 (up to 2,500 words) / US$20 (up to 5,000 words)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">US$1,500 (1st), US$500 (2nd)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: May annually</span>
+    <a class="card-link" href="https://lorianheming wayshortfiction.net" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story,poetry" data-country="Canada" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇨🇦 Canada</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Malahat Review Far Horizons Award</div>
+  <div class="card-org">The Malahat Review</div>
+  <div class="card-types"><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">A biennial award from Canada&#x27;s oldest literary magazine for emerging writers who have not yet published a full-length book. Alternates annually between poetry and fi…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">C$35 per entry (early bird C$25)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">C$1,500</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: May 2026</span>
+    <a class="card-link" href="https://www.malahatreview.ca/contests.html" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="short-story,poetry" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Ploughshares Emerging Writer&#x27;s Contest</div>
+  <div class="card-org">Ploughshares Literary Magazine</div>
+  <div class="card-types"><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">An annual contest from Ploughshares — one of America&#x27;s most respected and widely read literary magazines — for writers who have not yet published a full-length book.…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">$30 (free for subscribers)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">$2,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: May 2026</span>
+    <a class="card-link" href="https://ploughshares.org/about-ploughshares/contests-and-fellowships/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Final Draft Big Break Screenwriting Contest</div>
+  <div class="card-org">Final Draft</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Presented by the makers of the industry-standard screenwriting software, Big Break accepts feature films, TV pilots (hour-long and half-hour), and short scripts. Ope…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $60 features; TV pilots and shorts priced separately</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">USD $10,000 + industry introductions</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jun 2026</span>
+    <a class="card-link" href="https://www.finaldraft.com/big-break-screenwriting-contest/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="screenplay" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">HollyShorts Screenplay Contest</div>
+  <div class="card-org">HollyShorts Film Festival</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Part of the annual HollyShorts Film Festival (Aug 13–23, 2026), this contest accepts short screenplays up to 30 pages and TV pilots up to 50 pages. Winners gain expo…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $40 early / $55 standard</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">Industry recognition + festival screening opportunities</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jun 2026</span>
+    <a class="card-link" href="https://www.hollyshorts.com/2026-screenplay-contest" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">PAGE International Screenwriting Awards</div>
+  <div class="card-org">PAGE Awards</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">One of Hollywood&#x27;s most respected screenplay contests, judged by working producers, agents, managers, and development executives. Ten genre categories including Acti…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $40 early / $55 standard (feature); short scripts discounted</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">USD $25,000 grand prize + over $50,000 total</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jun 2026</span>
+    <a class="card-link" href="https://pageawards.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">The Moth Short Story Prize</div>
+  <div class="card-org">The Moth Magazine</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Prestigious international prize from Ireland&#x27;s celebrated literary magazine. Up to 3,000 words. Open to anyone over 16 worldwide. Winning story published in the Iris…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">€15 per story</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€3,000 + publication in Irish Times</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 30 Jun annually</span>
+    <a class="card-link" href="https://www.themothmagazine.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel-extract" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Mslexia Novel Competition</div>
+  <div class="card-org">Mslexia</div>
+  <div class="card-types"><span class="type-chip">Novel Extract</span></div>
+  <p class="card-desc">Open to women and non-binary writers worldwide writing in English. Submit the first 10,000 words of an unpublished novel plus a synopsis. Winner receives £5,000 plus…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£27 per entry (£22 subscribers)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£5,000 + agent introductions + pitch training</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Jul annually</span>
+    <a class="card-link" href="https://mslexia.co.uk/competitions" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel-extract" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Richell Prize for Emerging Writers</div>
+  <div class="card-org">Hachette Australia / Emerging Writers&#x27; Festival</div>
+  <div class="card-types"><span class="type-chip">Novel Extract</span></div>
+  <p class="card-desc">Free-entry prize for unpublished emerging Australian writers of adult fiction or narrative non-fiction. Submit first three chapters plus synopsis. Winner receives AU…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$10,000 + year&#x27;s mentoring with Hachette</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Aug annually</span>
+    <a class="card-link" href="https://www.hachette.com.au/richell-prize" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Script Pipeline Screenwriting Contest</div>
+  <div class="card-org">Script Pipeline</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">One of the longest-running U.S. screenplay contests, focused on connecting writers with representation. Quarterfinalists and above receive personalised development s…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $45 early / $55 standard</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">USD $25,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Aug 2026</span>
+    <a class="card-link" href="https://scriptpipeline.com/contest/screenwriting-contest" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="poetry" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Southword Chapbook Competition</div>
+  <div class="card-org">Munster Literature Centre</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">An annual competition for poetry chapbooks run by the Munster Literature Centre and Southword Editions, launched at the Cork International Poetry Festival. Two winne…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">€20</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€1,000 + chapbook publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Aug 2026</span>
+    <a class="card-link" href="https://munsterlit.ie/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Victorian Premier&#x27;s Literary Award — Fiction</div>
+  <div class="card-org">Wheeler Centre / Victorian Government</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Part of Australia&#x27;s richest state-based literary prize suite. Category winners receive $25,000 and compete for the Victorian Prize for Literature ($100,000). Adminis…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$25,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Aug 2026</span>
+    <a class="card-link" href="https://www.wheelercentre.com/victorian-premier-s-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Victorian Premier&#x27;s Literary Award — Poetry</div>
+  <div class="card-org">Wheeler Centre / Victorian Government</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">One of Australia&#x27;s richest poetry prizes, part of the Victorian Premier&#x27;s Literary Awards suite. The category winner receives $25,000 and competes for the overall Vi…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$25,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Aug 2026</span>
+    <a class="card-link" href="https://www.wheelercentre.com/victorian-premier-s-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Victorian Premier&#x27;s Literary Award — Unpublished Manuscript</div>
+  <div class="card-org">Wheeler Centre / Victorian Government</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Open to Victorian residents for an unpublished fiction manuscript — novel or story collection. Winner receives $15,000 plus a two-week creative residency at McCraith…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$15,000 + residency</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Aug 2026</span>
+    <a class="card-link" href="https://www.wheelercentre.com/victorian-premier-s-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Irish Writers Centre Debut Novel Competition</div>
+  <div class="card-org">Irish Writers Centre</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">The Irish Writers Centre&#x27;s flagship annual initiative gives unpublished novelists the opportunity to pitch their novels to world-class publishers and literary agents…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">€30</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">Agent pitching + development</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Sep 2026</span>
+    <a class="card-link" href="https://irishwriterscentre.ie/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Mslexia Short Story Competition</div>
+  <div class="card-org">Mslexia</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Open to women and non-binary writers worldwide. Up to 2,200 words. Winner and finalists published in Mslexia and the Best Women&#x27;s Short Fiction anthology. One of the…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£10 per story</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£2,500 + publication in Mslexia</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Sep annually</span>
+    <a class="card-link" href="https://mslexia.co.uk/competitions" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">The Booker Prize</div>
+  <div class="card-org">The Booker Prize Foundation</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">One of the world&#x27;s most prestigious literary awards, given annually for the best novel written in English and published in the UK or Ireland. Open to writers of any…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£50,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Sep 2026</span>
+    <a class="card-link" href="https://thebookerprizes.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="screenplay" data-country="USA" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Austin Film Festival</div>
+  <div class="card-org">Austin Film Festival</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Known as the &#x27;writer&#x27;s festival&#x27;, the Austin Film Festival hosts the world&#x27;s largest screenwriters&#x27; conference alongside its film programme. Hundreds of panels, pitc…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $50–$295 for conference passes</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">N/A — festival/conference event</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Oct 2026</span>
+    <a class="card-link" href="https://austinfilmfestival.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="International" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🌐 International</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">John Pollard International Poetry Prize</div>
+  <div class="card-org">John Pollard Foundation</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Awarded to a debut full-length poetry collection published originally in English. Publishers submit four copies. One of the most valuable poetry prizes for debut col…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€10,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Oct annually</span>
+    <a class="card-link" href="https://johnpollardfoundation.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story,poetry" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Missouri Review Jeffrey E. Smith Editors&#x27; Prize</div>
+  <div class="card-org">The Missouri Review</div>
+  <div class="card-types"><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">An annual prize from The Missouri Review — one of America&#x27;s most influential literary journals — for the best unpublished fiction, poetry, and essay. Open internatio…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">$25 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">$5,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Oct 2026</span>
+    <a class="card-link" href="https://www.missourireview.com/contests/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">NSW Premier&#x27;s Literary Award — Christina Stead Prize for Fiction</div>
+  <div class="card-org">State Library of NSW / Create NSW</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Australia&#x27;s longest-running state literary award. The Christina Stead Prize, worth $40,000, is the flagship fiction prize of the NSW Premier&#x27;s Literary Awards. Open…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$40,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Oct 2026</span>
+    <a class="card-link" href="https://www.sl.nsw.gov.au/awards/nsw-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">NSW Premier&#x27;s Literary Award — Kenneth Slessor Prize for Poetry</div>
+  <div class="card-org">State Library of NSW / Create NSW</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">One of Australia&#x27;s most significant poetry prizes, awarded annually as part of the NSW Premier&#x27;s Literary Awards for a published collection or long poem. Named for c…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$30,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Oct 2026</span>
+    <a class="card-link" href="https://www.sl.nsw.gov.au/awards/nsw-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel,short-story" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">NSW Premier&#x27;s Literary Award — UTS Glenda Adams Award for New Writing</div>
+  <div class="card-org">State Library of NSW / Create NSW</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">A $10,000 prize within the NSW Premier&#x27;s Literary Awards for debut fiction — the best first published novel or story collection by an Australian writer. Named for ac…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$10,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Oct 2026</span>
+    <a class="card-link" href="https://www.sl.nsw.gov.au/awards/nsw-literary-awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">National Poetry Competition</div>
+  <div class="card-org">The Poetry Society (UK)</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Run by The Poetry Society since 1978, one of the world&#x27;s most prestigious prizes for a single unpublished poem. Open to all poets worldwide aged 18+. Judged anonymou…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£7 per poem (members discounted)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£5,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Oct annually</span>
+    <a class="card-link" href="https://poetrysociety.org.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel-extract" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Bath Children&#x27;s Novel Award</div>
+  <div class="card-org">Bath Novel Award</div>
+  <div class="card-types"><span class="type-chip">Novel Extract</span></div>
+  <p class="card-desc">Sister award to the Bath Novel Award, open to unagented writers of children&#x27;s fiction worldwide — both unpublished and self-published authors welcome. Submit the fir…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">£33 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£5,000 + agent interest</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 30 Nov 2026</span>
+    <a class="card-link" href="https://bathnovelaward.co.uk/childrens-novel-award/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="poetry" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Fish Publishing Poetry Prize</div>
+  <div class="card-org">Fish Publishing</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Respected international poetry prize. Open to all poets worldwide. Winners and shortlisted poems published in the annual Fish Anthology. Judged anonymously. Maximum…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">€14 per poem</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€1,000 + anthology publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 30 Nov annually</span>
+    <a class="card-link" href="https://www.fishpublishing.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Fish Publishing Short Story Prize</div>
+  <div class="card-org">Fish Publishing</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Internationally respected short story prize. Max 5,000 words. Open to all writers worldwide. Winners and shortlisted stories published in the Fish Anthology, a respe…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">€14 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€3,000 + anthology publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: 30 Nov annually</span>
+    <a class="card-link" href="https://www.fishpublishing.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="poetry" data-country="Ireland" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇮🇪 Ireland</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Gregory O&#x27;Donoghue International Poetry Competition</div>
+  <div class="card-org">Munster Literature Centre / Southword</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">A major annual international poetry prize run by the Munster Literature Centre (publishers of Southword journal) and named for Cork poet Gregory O&#x27;Donoghue. Open to…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">€8 per poem</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">€2,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Nov 2026</span>
+    <a class="card-link" href="https://munsterlit.ie/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Canada" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇨🇦 Canada</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Griffin Poetry Prize</div>
+  <div class="card-org">Griffin Trust for Excellence in Poetry</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">One of the world&#x27;s most valuable prizes for a single poetry collection, with CA$65,000 each for best Canadian and best International collection. Publisher-submitted.…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">CA$65,000 per category (Canadian + International)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Dec annually</span>
+    <a class="card-link" href="https://griffinpoetryprize.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Orange Prize / Women&#x27;s Prize for Fiction</div>
+  <div class="card-org">Women&#x27;s Prize for Fiction</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">Created to address gender bias in literary awards. Celebrates excellence, originality, and accessibility in women&#x27;s writing. Open to women of any nationality writing…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£30,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Dec/Jan annually</span>
+    <a class="card-link" href="https://womensprizeforfiction.co.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Overland Neilma Sidney Short Story Prize</div>
+  <div class="card-org">Overland Literary Journal</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Supported by the Malcolm Robertson Foundation and named after novelist Neilma Gantner. Seeks powerful short fiction up to 3,000 words on an annual theme. Open intern…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">AU$20 (AU$12 for Overland subscribers)</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$5,000 + publication in Overland</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Dec annually</span>
+    <a class="card-link" href="https://overland.org.au/prizes" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Penguin Literary Prize</div>
+  <div class="card-org">Penguin Random House Australia</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">Free-entry prize from Penguin Random House Australia for unpublished adult literary fiction. Open to Australian residents 18+. Complete manuscripts only (up to 100,0…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">Publishing contract with PRH Australia</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Dec annually</span>
+    <a class="card-link" href="https://www.penguin.com.au/penguinliteraryprize" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">ABR Peter Porter Poetry Prize</div>
+  <div class="card-org">Australian Book Review</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Named for acclaimed Australian-born British poet Peter Porter, this prize is awarded annually by Australian Book Review for the best unpublished poem. Open internati…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$8,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://www.australianbookreview.com.au/prizes-programs" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="flash" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">AWC Furious Fiction</div>
+  <div class="card-org">Australian Writers&#x27; Centre</div>
+  <div class="card-types"><span class="type-chip">Flash Fiction</span></div>
+  <p class="card-desc">Monthly free-entry flash fiction contest run by the Australian Writers&#x27; Centre. Stories must be 500 words max and written within a weekend using set criteria. Open i…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">AU$500 monthly</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Monthly, rolling</span>
+    <a class="card-link" href="https://www.writerscentre.com.au/furious-fiction" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="poetry,short-story" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Aesthetica Creative Writing Award</div>
+  <div class="card-org">Aesthetica Magazine</div>
+  <div class="card-types"><span class="type-chip">Poetry</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Free-entry contest for poetry and short fiction. Winners published in Aesthetica Magazine and receive £1,000. Open internationally. Celebrates innovative and boundar…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£1,000 + publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Varies annually</span>
+    <a class="card-link" href="https://aestheticamagazine.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story,poetry" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Alpine Fellowship Writing Prize</div>
+  <div class="card-org">The Alpine Fellowship</div>
+  <div class="card-types"><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Free-entry contest for the best philosophical-themed writing. Offers one of the largest free-entry prizes in creative writing. Open internationally.</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£10,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Varies annually</span>
+    <a class="card-link" href="https://alpinefellowship.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="screenplay" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Australian International Screenwriting Awards (AISA)</div>
+  <div class="card-org">AISA</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">International screenplay competition based in Australia, open to screenwriters worldwide. Accepts feature scripts, shorts, and TV pilots. Emphasises detailed reader…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">Approx. AUD $45–$65 depending on category</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">Cash prizes + industry feedback</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://filmfreeway.com/AustralianInternationalScreenwritingAwards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel-extract" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Crime Writers&#x27; Association Debut Dagger</div>
+  <div class="card-org">Crime Writers&#x27; Association</div>
+  <div class="card-types"><span class="type-chip">Novel Extract</span></div>
+  <p class="card-desc">International competition for crime novelists writing in English. All crime subgenres welcome. Entrants may not have self-published fiction over 20,000 words. Win ca…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">~£36 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£500 + representation interest</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Varies annually</span>
+    <a class="card-link" href="https://thecwa.co.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Galley Beggar Press Short Story Prize</div>
+  <div class="card-org">Galley Beggar Press</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">No entry fee prize run by the independent publisher Galley Beggar Press. Seeks extraordinary storytelling. Open internationally. One of the few free-entry prizes fro…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£500 + publication consideration</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Varies annually</span>
+    <a class="card-link" href="https://galleybeggar.co.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel,short-story" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Griffith University — Queensland University of Technology Prize for Literature</div>
+  <div class="card-org">Queensland University of Technology</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">A well-regarded annual prize for unpublished fiction run by Queensland University of Technology&#x27;s Creative Writing program. Open to Australian and New Zealand writer…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">A$20 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$10,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://www.qut.edu.au/study/creative-writing" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="poetry" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Helen Anne Bell Poetry Bequest Award</div>
+  <div class="card-org">State Library of NSW</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Australia&#x27;s richest poetry prize and one of its most prestigious, awarded annually to celebrate women poets. Worth $40,000. Past winners include Evelyn Araluen, Judi…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$40,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://www.sl.nsw.gov.au/awards" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-low" data-types="short-story,poetry,flash" data-country="International" data-prestige="low">
+  <div class="card-badges">
+    <span class="badge badge-country">🌐 International</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-low">Emerging</span>
+  </div>
+  <div class="card-title">Letter Review Prize</div>
+  <div class="card-org">Letter Review</div>
+  <div class="card-types"><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span><span class="type-chip">Flash Fiction</span></div>
+  <p class="card-desc">Free-entry competition awarding US$1,000 across multiple genres including short stories, poetry, and flash fiction. Open internationally. Rolling deadlines make it a…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">US$1,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://letterreview.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="short-story" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Meanjin Dinny O&#x27;Hearn Fellowship</div>
+  <div class="card-org">Meanjin / University of Melbourne</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">A fellowship and prize from Meanjin — one of Australia&#x27;s oldest and most prestigious literary journals — for emerging writers of fiction and essays. Publication in M…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$5,000 + publication</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://meanjin.com.au/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="poetry" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Overland Judith Wright Poetry Prize</div>
+  <div class="card-org">Overland Literary Journal</div>
+  <div class="card-types"><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">An annual prize for an unpublished poem from Overland, one of Australia&#x27;s most important literary and political journals. Named for poet Judith Wright. Winning and s…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">A$10 per poem</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$5,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://overland.org.au/overland-judith-wright-poetry-prize/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="screenplay" data-country="Australia" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">QWC Scriptable Program</div>
+  <div class="card-org">Queensland Writers Centre</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">National development program for emerging Australian screenwriters. Accepts unproduced scripts across feature film, television, web series, and short film. Successfu…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">Mentorship + industry development</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://queenslandwriters.org.au/competitions" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story,poetry" data-country="UK" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Rathbones Folio Prize</div>
+  <div class="card-org">Folio Prize Academy</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Awarded to the best work of literature in the English language, regardless of form or nationality. Nominated by Academy members. Celebrates literary merit across fic…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£30,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Varies annually</span>
+    <a class="card-link" href="https://thefolioprize.com" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-low" data-types="short-story" data-country="USA" data-prestige="low">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-low">Emerging</span>
+  </div>
+  <div class="card-title">Reedsy Short Story Contest</div>
+  <div class="card-org">Reedsy</div>
+  <div class="card-types"><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">Weekly themed short story contest with rolling deadlines and free entry. Open internationally. Strong community of writers. A good entry point for emerging writers s…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">US$250 weekly</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Weekly, rolling</span>
+    <a class="card-link" href="https://reedsy.com/prompts" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="screenplay" data-country="USA" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇺🇸 USA</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">ScreenCraft Genre Competitions</div>
+  <div class="card-org">ScreenCraft</div>
+  <div class="card-types"><span class="type-chip">Screenplay</span></div>
+  <p class="card-desc">Runs year-round genre-specific competitions including Drama, Comedy, Horror, Sci-Fi, Animation, and TV Pilot, each judged by relevant industry professionals. Known f…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">USD $40–$55 depending on category and deadline</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">USD $1,000–$3,000 + industry introductions</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://screencraft.org/competitions/" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Voss Literary Prize</div>
+  <div class="card-org">The Sydney Morning Herald</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span></div>
+  <p class="card-desc">Awarded by the Sydney Morning Herald to the best literary novel published in Australia. Named for Patrick White&#x27;s celebrated novel Voss. One of Australia&#x27;s most pres…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$10,000</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://www.smh.com.au/entertainment/books" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-high" data-types="novel,short-story" data-country="Australia" data-prestige="high">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge badge-no-intl">Domestic</span>
+    <span class="badge badge-prestige-high">High Prestige</span>
+  </div>
+  <div class="card-title">Wheeler Centre Next Chapter Fellowship</div>
+  <div class="card-org">The Wheeler Centre</div>
+  <div class="card-types"><span class="type-chip">Complete Novel</span><span class="type-chip">Short Story</span></div>
+  <p class="card-desc">A prestigious fellowship for Australian writers of underrepresented backgrounds to complete a work of literary fiction or narrative non-fiction. Provides $20,000 plu…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val free">Free</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">A$20,000 + mentoring</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Rolling</span>
+    <a class="card-link" href="https://www.wheelercentre.com/next-chapter" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+<div class="card prestige-mid" data-types="novel-extract,short-story,poetry" data-country="UK" data-prestige="mid">
+  <div class="card-badges">
+    <span class="badge badge-country">🇬🇧 UK</span>
+    <span class="badge badge-intl">✓ Intl.</span>
+    <span class="badge badge-prestige-mid">Mid Prestige</span>
+  </div>
+  <div class="card-title">Yeovil Literary Prize</div>
+  <div class="card-org">Yeovil Literary Prize</div>
+  <div class="card-types"><span class="type-chip">Novel Extract</span><span class="type-chip">Short Story</span><span class="type-chip">Poetry</span></div>
+  <p class="card-desc">Open to anyone over 16. Five categories: Novel, Short Story, Poetry, Children&#x27;s/YA Novel, and Writing Without Restrictions. Strong track record of supporting emergin…</p>
+  <div class="card-meta">
+    <div class="meta-item"><span class="meta-label">Entry Fee</span><span class="meta-val">From £10 per entry</span></div>
+    <div class="meta-item"><span class="meta-label">Prize</span><span class="meta-val prize">£1,350 (Novel) / £625 (other categories)</span></div>
+  </div>
+  <div class="card-footer">
+    <span class="deadline-chip">Closes: Varies annually</span>
+    <a class="card-link" href="https://yeovilliteraryprizze.co.uk" target="_blank" rel="noopener">Visit site →</a>
+  </div>
+</div>
+      <div class="no-results" id="no-comps">No competitions match your filters. <a href="/">Browse the full directory &rarr;</a></div>
+    </div>
     <div class="info-section">
       <h2>Australian Writing Competitions in 2026</h2>
-    <p>Australia has one of the most vibrant literary competition scenes in the world, with prizes run by state writers centres, universities, literary journals, and cultural organisations across every state and territory. From the Victorian Premier's Literary Awards to the Vogel Literary Award, there are opportunities for writers of all levels.</p>
-    <p>Many Australian competitions are free to enter and open to writers worldwide, while others are specifically for Australian citizens or residents. Filter by type to find short story competitions, poetry prizes, novel awards, flash fiction contests, and screenwriting opportunities.</p>
-    <p>The Resources tab below lists Australian writers centres, associations, training providers — and literary festivals including the Melbourne Writers Festival, Sydney Writers' Festival, and Adelaide Writers' Week.</p>
+      <p>Australia has one of the most vibrant literary competition scenes in the world, with prizes run by state writers centres, universities, literary journals, and cultural organisations across every state and territory. From the Victorian Premier's Literary Awards to the Vogel Literary Award, there are opportunities for writers of all levels.</p>
+<p>Many Australian competitions are free to enter and open to writers worldwide, while others are specifically for Australian citizens or residents. Filter by type to find short story competitions, poetry prizes, novel awards, flash fiction contests, and screenwriting opportunities.</p>
+<p>The Resources &amp; Festivals tab lists Australian writers centres, associations, training providers — and major literary festivals including the Melbourne Writers Festival, Sydney Writers' Festival, Adelaide Writers' Week (entirely free to attend), and the Emerging Writers' Festival.</p>
       <p>Can&rsquo;t find what you&rsquo;re looking for? <a href="/">Browse the full Scriptorium directory</a> or <a href="/submit-competition.html">submit a competition</a> for review.</p>
     </div>
     <div class="cta-band">
@@ -256,226 +1990,481 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
     </div>
   </div>
 
-  <!-- RESOURCES SECTION -->
-  <div class="section" id="section-resources">
-    <div class="results-header">
-      <p class="results-count" id="res-count">Loading&hellip;</p>
+  <div class="section" id="section-res">
+    <div class="results-bar">
+      <p class="results-count" id="res-count">Showing <strong>27</strong> resources</p>
     </div>
-    <div class="grid" id="res-grid"></div>
-    <div class="suggest-bar">
-      <p>Know a resource or festival we&rsquo;ve missed? <a href="/submit-competition.html">Let us know &rarr;</a></p>
-    </div>
+    <div class="grid" id="res-grid">
+      <div class="card" data-type="association" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Association</span>
   </div>
+  <div class="card-title">Australian Poetry</div>
+  <div class="card-org">Melbourne</div>
+  <p class="card-desc" style="flex:1;">The national peak body for poetry in Australia. Publishes Australian Poetry Journal, administers the Australian Poetry Slam and represents poets&#x27; interests nationall…</p>
+  <div class="card-footer"><span class="deadline-chip">A$50/yr</span><a class="card-link" href="https://australianpoetry.org" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="association" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Association</span>
+  </div>
+  <div class="card-title">Australian Society of Authors (ASA)</div>
+  <div class="card-org">Sydney</div>
+  <p class="card-desc" style="flex:1;">The peak advocacy body for professional authors and illustrators in Australia. Provides contract advice, legal guidance, professional development and lobbies governm…</p>
+  <div class="card-footer"><span class="deadline-chip">A$225/yr</span><a class="card-link" href="https://asauthors.org" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="association" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Association</span>
+  </div>
+  <div class="card-title">Crime Writers&#x27; Association of Australia</div>
+  <div class="card-org">National (online)</div>
+  <p class="card-desc" style="flex:1;">The peak body for Australian crime and mystery writers, running the Ned Kelly Awards — Australia&#x27;s most prestigious crime writing prizes — and providing community an…</p>
+  <div class="card-footer"><span class="deadline-chip">A$80/yr</span><a class="card-link" href="https://www.nedkellyawards.com" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="association" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Association</span>
+  </div>
+  <div class="card-title">Romance Writers of Australia</div>
+  <div class="card-org">National (online)</div>
+  <p class="card-desc" style="flex:1;">Australia&#x27;s peak body for romance writers, offering workshops, critique groups, the annual conference and the Ruby Award for unpublished romance manuscripts.</p>
+  <div class="card-footer"><span class="deadline-chip">A$90/yr</span><a class="card-link" href="https://www.romanceaustralia.com" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Adelaide Writers&#x27; Week</div>
+  <div class="card-org">Adelaide, SA&nbsp;·&nbsp;Mar 2026</div>
+  <p class="card-desc" style="flex:1;">A uniquely accessible literary festival — every single session is free to attend. Held in Pioneer Women&#x27;s Memorial Garden as part of the Adelaide Festival each March…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://adelaidefestival.com.au/writers-week" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Brisbane Writers Festival</div>
+  <div class="card-org">Brisbane, QLD&nbsp;·&nbsp;Sep 2026</div>
+  <p class="card-desc" style="flex:1;">Queensland&#x27;s flagship literary event, held annually in Brisbane each September. Features local, national, and international authors across fiction, non-fiction, chil…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://bwf.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Byron Bay Writers Festival</div>
+  <div class="card-org">Byron Bay, NSW&nbsp;·&nbsp;Aug 2026</div>
+  <p class="card-desc" style="flex:1;">One of Australia&#x27;s most beloved literary festivals, held in the hinterland of Byron Bay each August. Combines an accessible outdoor setting with a strong programme o…</p>
+  <div class="card-footer"><span class="deadline-chip">$10–$60 per session; day passes available</span><a class="card-link res-link" href="https://byronbaywritersfestival.com.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Emerging Writers&#x27; Festival</div>
+  <div class="card-org">Melbourne, VIC&nbsp;·&nbsp;May 2026</div>
+  <p class="card-desc" style="flex:1;">Australia&#x27;s premier festival for emerging writers, held annually in Melbourne. Dedicated to supporting writers at the beginning of their career with workshops, panel…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://emergingwritersfestival.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Melbourne Writers Festival</div>
+  <div class="card-org">Melbourne, VIC&nbsp;·&nbsp;Aug 2026</div>
+  <p class="card-desc" style="flex:1;">One of Australia&#x27;s largest and most prestigious literary festivals, held annually in Melbourne. Features hundreds of events across fiction, non-fiction, poetry, scre…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://mwf.com.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">National Young Writers Festival</div>
+  <div class="card-org">Newcastle, NSW&nbsp;·&nbsp;Oct 2026</div>
+  <p class="card-desc" style="flex:1;">An annual festival in Newcastle, NSW, celebrating writing, zines, comics, and creative expression by and for young and emerging writers. A beloved community-run even…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://youngwritersfestival.org" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Perth Festival Writers Weekend</div>
+  <div class="card-org">Perth, WA&nbsp;·&nbsp;Feb 2026</div>
+  <p class="card-desc" style="flex:1;">Part of the Perth Festival each February, the Writers Weekend brings major Australian and international literary figures to Western Australia. Held across multiple v…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://perthfestival.com.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Sketch and Scribe Festival</div>
+  <div class="card-org">Australia&nbsp;·&nbsp;Rolling</div>
+  <p class="card-desc" style="flex:1;">A boutique Australian festival celebrating the intersection of visual art and writing — illustration, graphic novels, picture books, and literary comics. Ideal for w…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://sketchandscribe.com.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card resource-festival" data-type="festival" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);">Festival &amp; Event</span>
+  </div>
+  <div class="card-title">Sydney Writers&#x27; Festival</div>
+  <div class="card-org">Sydney, NSW&nbsp;·&nbsp;May 2026</div>
+  <p class="card-desc" style="flex:1;">One of the world&#x27;s great literary festivals, held annually in Sydney each May. Features hundreds of sessions with major Australian and international authors across f…</p>
+  <div class="card-footer"><span class="deadline-chip free-note">Free to attend</span><a class="card-link res-link" href="https://swf.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="training" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Training</span>
+  </div>
+  <div class="card-title">Australian Writers&#x27; Centre</div>
+  <div class="card-org">Sydney (online)</div>
+  <p class="card-desc" style="flex:1;">Australia&#x27;s largest provider of practical writing courses — online and in-person. Covers commercial fiction, children&#x27;s writing, screenwriting, blogging and more. Ru…</p>
+  <div class="card-footer"><span class="deadline-chip">From A$397 per course</span><a class="card-link" href="https://writerscentre.com.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="training" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Training</span>
+  </div>
+  <div class="card-title">RMIT University — Master of Creative Writing</div>
+  <div class="card-org">Melbourne</div>
+  <p class="card-desc" style="flex:1;">One of Australia&#x27;s most prominent creative writing programs, with a strong emphasis on contemporary forms and professional publication. Hosts the renowned non/fictio…</p>
+  <div class="card-footer"><span class="deadline-chip">Domestic/international fees apply</span><a class="card-link" href="https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters/master-of-creative-writing-mc214" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="training" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Training</span>
+  </div>
+  <div class="card-title">University of Melbourne — Master of Creative Writing</div>
+  <div class="card-org">Melbourne</div>
+  <p class="card-desc" style="flex:1;">One of Australia&#x27;s most prestigious postgraduate creative writing programs. Strong tradition of producing published novelists and poets. Workshops with leading Austr…</p>
+  <div class="card-footer"><span class="deadline-chip">Domestic/international fees apply</span><a class="card-link" href="https://arts.unimelb.edu.au/sca/graduate-research" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="training" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Training</span>
+  </div>
+  <div class="card-title">University of Queensland — Creative Writing</div>
+  <div class="card-org">Brisbane</div>
+  <p class="card-desc" style="flex:1;">UQ&#x27;s creative writing program is nationally recognised. Alumni include many of Australia&#x27;s most successful novelists. Strong mentoring culture and close links to the…</p>
+  <div class="card-footer"><span class="deadline-chip">Domestic/international fees apply</span><a class="card-link" href="https://www.uq.edu.au/study/program.html?acad_prog=5641" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="training" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Training</span>
+  </div>
+  <div class="card-title">University of Technology Sydney — Master of Creative Writing</div>
+  <div class="card-org">Sydney</div>
+  <p class="card-desc" style="flex:1;">UTS is home to one of Australia&#x27;s strongest creative writing schools, with an impressive track record of graduates publishing with major houses. Strong focus on fict…</p>
+  <div class="card-footer"><span class="deadline-chip">Domestic/international fees apply</span><a class="card-link" href="https://www.uts.edu.au/study/humanities-and-social-sciences/master-creative-writing" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">ACT Writers Centre</div>
+  <div class="card-org">Canberra</div>
+  <p class="card-desc" style="flex:1;">Canberra&#x27;s peak writing body, based at Gorman House Arts Centre. Offers workshops, manuscript assessments, critique groups and an active community for ACT writers.</p>
+  <div class="card-footer"><span class="deadline-chip">A$90/yr</span><a class="card-link" href="https://actwriters.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">NT Writers&#x27; Centre</div>
+  <div class="card-org">Darwin</div>
+  <p class="card-desc" style="flex:1;">The Northern Territory&#x27;s peak writing body, based at Froghollow Centre for the Arts. Offers workshops, mentoring, literacy programs and advocacy for Territory writer…</p>
+  <div class="card-footer"><span class="deadline-chip">A$60/yr</span><a class="card-link" href="https://ntwriters.com.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">Queensland Writers Centre</div>
+  <div class="card-org">Brisbane</div>
+  <p class="card-desc" style="flex:1;">Queensland&#x27;s peak writing body, based at the State Library of Queensland. Delivers workshops, manuscript assessments, the QWC/Hachette Manuscript Development Program…</p>
+  <div class="card-footer"><span class="deadline-chip">A$85/yr</span><a class="card-link" href="https://queenslandwriters.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">TasWriters</div>
+  <div class="card-org">Hobart</div>
+  <p class="card-desc" style="flex:1;">Tasmania&#x27;s peak body for writers, offering workshops, mentoring, manuscript assessments, events and advocacy for Tasmanian writers of all genres.</p>
+  <div class="card-footer"><span class="deadline-chip">A$75/yr</span><a class="card-link" href="https://taswriters.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">The Wheeler Centre</div>
+  <div class="card-org">Melbourne</div>
+  <p class="card-desc" style="flex:1;">Melbourne&#x27;s hub for books, writing and ideas. Hosts major public talks and events with leading Australian and international authors. Administers the Next Chapter Fel…</p>
+  <div class="card-footer"><span class="deadline-chip">Free</span><a class="card-link" href="https://wheelercentre.com" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">Writers SA</div>
+  <div class="card-org">Adelaide</div>
+  <p class="card-desc" style="flex:1;">Australia&#x27;s first writers centre, established in 1985. Delivers workshops, professional development, public readings and mentoring programs for South Australian writ…</p>
+  <div class="card-footer"><span class="deadline-chip">A$85/yr</span><a class="card-link" href="https://writerssa.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">Writers Victoria</div>
+  <div class="card-org">Melbourne</div>
+  <p class="card-desc" style="flex:1;">Victoria&#x27;s peak body for writers, offering workshops, manuscript assessment, mentorships, grants and a rich program of events across metropolitan and regional Victor…</p>
+  <div class="card-footer"><span class="deadline-chip">A$110/yr</span><a class="card-link" href="https://writersvictoria.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">Writing NSW</div>
+  <div class="card-org">Sydney</div>
+  <p class="card-desc" style="flex:1;">NSW&#x27;s peak body for writers — formerly NSW Writers&#x27; Centre, founded 1991. Offers workshops, manuscript assessment, mentoring, events and extensive online resources f…</p>
+  <div class="card-footer"><span class="deadline-chip">A$120/yr</span><a class="card-link" href="https://writingnsw.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+<div class="card" data-type="writers-centre" data-country="Australia">
+  <div class="card-badges">
+    <span class="badge badge-country">🇦🇺 Australia</span>
+    <span class="badge" style="background:var(--primary-light);color:var(--primary);">Writers Centre</span>
+  </div>
+  <div class="card-title">Writing WA</div>
+  <div class="card-org">Perth</div>
+  <p class="card-desc" style="flex:1;">Western Australia&#x27;s peak writing body, supporting WA writers through workshops, manuscript assessments, events, awards and advocacy.</p>
+  <div class="card-footer"><span class="deadline-chip">A$85/yr</span><a class="card-link" href="https://writingwa.org.au" target="_blank" rel="noopener">Visit site →</a></div>
+</div>
+    </div>
+    <p class="suggest-note">Know a resource or festival we&rsquo;ve missed? <a href="/submit-competition.html">Let us know &rarr;</a></p>
+  </div>
+
+  <section class="nl-band" id="nl-band">
+    <h3>Never miss a deadline</h3>
+    <p>Join writers across 6 countries getting curated competition deadlines and literary news every week.</p>
+    <form class="nl-form" onsubmit="handleNL(event,'inline')">
+      <input type="email" id="nl-email" placeholder="your@email.com" required autocomplete="email">
+      <button type="submit">Subscribe free &rarr;</button>
+    </form>
+    <select class="nl-country" id="nl-country">
+      <option value="">Country (optional)</option>
+      <option value="Australia">🇦🇺 Australia</option>
+      <option value="New Zealand">🇳🇿 New Zealand</option>
+      <option value="UK">🇬🇧 United Kingdom</option>
+      <option value="Ireland">🇮🇪 Ireland</option>
+      <option value="USA">🇺🇸 United States</option>
+      <option value="Canada">🇨🇦 Canada</option>
+      <option value="other">✏ Other…</option>
+    </select>
+    <p class="nl-hint">Free. No spam. Unsubscribe anytime.</p>
+    <div class="nl-success" id="nl-success">&#10003; You&rsquo;re subscribed! Check your inbox.</div>
+  </section>
 
 </main>
 
+<footer class="site-footer" id="newsletter">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 2v7l-2.5-1.5L12 11V4h5zm-5 16H6V4h4v9l3.5-2.1L17 13V4h1v16h-6z"/>
+            </svg>
+          </div>
+          <span class="footer-logo-name">The Scriptorium</span>
+        </div>
+        <p class="footer-desc">The world's most curated directory of writing competitions, festivals, and opportunities for serious writers.</p>
+        <div class="footer-nl-label">Weekly digest — free</div>
+        <form class="footer-nl-form" id="footer-nl-form" onsubmit="handleNL(event,'footer')">
+          <input type="email" id="footer-nl-email" placeholder="your@email.com" required autocomplete="email">
+          <button type="submit">Join</button>
+        </form>
+        <select class="footer-nl-form" id="footer-nl-country" style="margin-top:.375rem;max-width:260px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.45rem .75rem;font-family:inherit;font-size:.8rem;color:rgba(255,255,255,.6);outline:none;">
+          <option value="">Country (optional)</option>
+          <option value="Australia">🇦🇺 Australia</option>
+          <option value="New Zealand">🇳🇿 New Zealand</option>
+          <option value="UK">🇬🇧 United Kingdom</option>
+          <option value="Ireland">🇮🇪 Ireland</option>
+          <option value="USA">🇺🇸 United States</option>
+          <option value="Canada">🇨🇦 Canada</option>
+          <option value="other">✏ Other…</option>
+        </select>
+        <div class="footer-nl-success" id="footer-nl-success">✓ You're subscribed!</div>
+      </div>
+      <div class="footer-col">
+        <h4>Directory</h4>
+        <ul>
+          <li><a href="/writing-competitions-australia.html">Australia</a></li>
+          <li><a href="/writing-competitions-uk.html">United Kingdom</a></li>
+          <li><a href="/writing-competitions-usa.html">United States</a></li>
+          <li><a href="/writing-competitions-canada.html">Canada</a></li>
+          <li><a href="/writing-competitions-ireland.html">Ireland</a></li>
+          <li><a href="/writing-competitions-new-zealand.html">New Zealand</a></li>
+          <li><a href="/writing-competitions-2026.html">2026 Deadlines</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/writing-courses-melbourne.html">Writing Courses Melbourne</a></li>
+          <li><a href="/">Writers Centres</a></li>
+          <li><a href="/">Associations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>The Scriptorium</h4>
+        <ul>
+          <li><a href="/submit-competition.html">Submit a Competition</a></li>
+          <li><a href="/">Broadcast to Writers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 The Scriptorium · Generated 2026-03-23 · Always verify details on official websites before submitting.</p>
+      <div class="footer-legal"><a href="/">Privacy</a><a href="/">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-const COMP_FILTER = c => c.country === 'Australia' || c.international === true;
-const RES_FILTER  = r => r.country === 'Australia';
-const COMP_URL    = 'https://raw.githubusercontent.com/bigmouth-au/thescriptorium/main/competitions.json';
-const RES_URL     = 'https://raw.githubusercontent.com/bigmouth-au/thescriptorium/main/resources.json';
+// ── NAV HAMBURGER ─────────────────────────────────────────────────────────────
+document.getElementById('nav-hamburger').addEventListener('click', function() {
+  const links = document.getElementById('nav-links');
+  const open  = links.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
 
-let allComps = [], allRes = [], activeType = 'all', searchTerm = '', activeResType = 'all';
-let nlInserted = false;
+// ── COMPETITION FILTER ────────────────────────────────────────────────────────
+let activeType = 'all', searchTerm = '';
 
-const flags      = {Australia:'🇦🇺',UK:'🇬🇧',USA:'🇺🇸',Canada:'🇨🇦',Ireland:'🇮🇪','New Zealand':'🇳🇿',International:'🌐'};
-const typeLabels = {'short-story':'Short Story','poetry':'Poetry','novel':'Complete Novel','novel-extract':'Novel Extract','flash':'Flash Fiction','screenplay':'Screenplay'};
-const resTypeLabels = {'writers-centre':'Writers Centre','association':'Association','training':'Training','festival':'Festival & Event'};
-const prestige   = {high:'High Prestige',mid:'Mid Prestige',low:'Emerging'};
+function applyCompFilters() {
+  const cards   = document.querySelectorAll('#comp-grid .card');
+  const noRes   = document.getElementById('no-comps');
+  let visible   = 0;
+  cards.forEach(card => {
+    const types   = (card.dataset.types || '').split(',');
+    const typeOk  = activeType === 'all' || types.includes(activeType);
+    const text    = (card.textContent || '').toLowerCase();
+    const searchOk = !searchTerm || text.includes(searchTerm);
+    const show    = typeOk && searchOk;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('comp-count').innerHTML =
+    visible === 0
+      ? 'No results'
+      : 'Showing <strong>' + visible + '</strong> competition' + (visible !== 1 ? 's' : '');
+  if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
+}
 
-// ── TAB SWITCHING ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.comp-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.comp-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeType = btn.dataset.type;
+    applyCompFilters();
+  });
+});
+const searchBox = document.getElementById('search-box');
+if (searchBox) {
+  searchBox.addEventListener('input', e => {
+    searchTerm = e.target.value.toLowerCase().trim();
+    applyCompFilters();
+  });
+}
+
+// ── RESOURCE FILTER ───────────────────────────────────────────────────────────
+let activeResType = 'all';
+
+function applyResFilters() {
+  const cards = document.querySelectorAll('#res-grid .card');
+  let visible = 0;
+  cards.forEach(card => {
+    const show = activeResType === 'all' || card.dataset.type === activeResType;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('res-count').innerHTML =
+    'Showing <strong>' + visible + '</strong> resource' + (visible !== 1 ? 's' : '');
+}
+
+document.querySelectorAll('.res-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.res-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeResType = btn.dataset.type;
+    applyResFilters();
+  });
+});
+
+// ── PAGE TABS ─────────────────────────────────────────────────────────────────
 function showTab(tab) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.page-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('section-' + tab + (tab==='comps'?'':'')).classList.add('active');
+  document.getElementById('section-' + tab).classList.add('active');
   document.getElementById('tab-' + tab).classList.add('active');
   document.getElementById('filter-bar-comps').style.display = tab === 'comps' ? '' : 'none';
-  document.getElementById('filter-bar-resources').style.display = tab === 'resources' ? '' : 'none';
-  // map tab name to section id
-  const secId = tab === 'comps' ? 'section-comps' : 'section-resources';
-  document.getElementById(secId).classList.add('active');
+  document.getElementById('filter-bar-res').style.display   = tab === 'res'   ? '' : 'none';
 }
 
-// ── COMPETITIONS ──────────────────────────────────────────────────────────────
-function isUpcoming(c) {
-  if (c.deadline === 'Rolling' || !c.deadline) return true;
-  const months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11,
-    January:0,February:1,March:2,April:3,June:5,July:6,August:7,September:8,October:9,November:10,December:11};
-  const m = c.deadline.match(/([A-Za-z]+)\s+(\d{4})/);
-  if (m && months[m[1]] !== undefined) return new Date(+m[2], months[m[1]], 28) >= new Date();
-  const d = new Date(c.deadline);
-  return !isNaN(d) && d >= new Date();
-}
-
-function buildCard(c) {
-  const feeDisplay = c.entryFeeSort === 0
-    ? '<span class="meta-val free">Free</span>'
-    : '<span class="meta-val">' + (c.entryFeeNote||'—') + '</span>';
-  const intlBadge = c.international
-    ? '<span class="badge badge-intl">✓ Intl.</span>'
-    : '<span class="badge badge-no-intl">Domestic</span>';
-  const types = (c.types||[]).map(t => '<span class="type-chip">' + (typeLabels[t]||t) + '</span>').join('');
-  const p = c.prestige || 'low';
-  return '<div class="card prestige-' + p + '">' +
-    '<div class="card-badges"><span class="badge badge-country">' + (flags[c.country]||'') + ' ' + c.country + '</span>' +
-    intlBadge + '<span class="badge badge-prestige-' + p + '">' + (prestige[p]||'Emerging') + '</span></div>' +
-    '<div class="card-title">' + c.name + '</div>' +
-    '<div class="card-org">' + (c.org||'') + '</div>' +
-    '<div class="card-types">' + types + '</div>' +
-    '<p class="card-desc">' + (c.description||'').slice(0,160) + ((c.description||'').length>160?'…':'') + '</p>' +
-    '<div class="card-meta">' +
-      '<div class="meta-item"><span class="meta-label">Entry Fee</span>' + feeDisplay + '</div>' +
-      '<div class="meta-item"><span class="meta-label">Top Prize</span><span class="meta-val prize">' + (c.prize||'—') + '</span></div>' +
-    '</div>' +
-    '<div class="card-footer"><span class="deadline-chip">Closes: ' + (c.deadline||'See website') + '</span>' +
-    (c.url ? '<a class="card-link" href="' + c.url + '" target="_blank" rel="noopener">Visit site →</a>' : '') +
-    '</div></div>';
-}
-
-function renderComps() {
-  const filtered = allComps.filter(c => {
-    const typeOk = activeType === 'all' || (c.types||[]).includes(activeType);
-    const q = searchTerm;
-    const searchOk = !q || (c.name||'').toLowerCase().includes(q) ||
-      (c.description||'').toLowerCase().includes(q) || (c.org||'').toLowerCase().includes(q);
-    return typeOk && searchOk;
-  });
-  const grid = document.getElementById('grid');
-  const cnt  = document.getElementById('results-count');
-  if (!filtered.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-3)">No competitions match your filters. <a href="/" style="color:var(--primary);font-weight:700">Browse the full directory →</a></div>';
-    cnt.innerHTML = 'No results';
-    return;
-  }
-  let html = '';
-  if (!nlInserted && filtered.length >= 18) {
-    html = filtered.slice(0,18).map(buildCard).join('') +
-      '<div class="nl-inline"><h3>Never miss a deadline</h3>' +
-      '<p>Join writers across 6 countries getting curated competition deadlines every week.</p>' +
-      '<form class="nl-inline-form" onsubmit="handleNL(event)">' +
-      '<input type="email" id="nl-email" placeholder="your@email.com" required>' +
-      '<button type="submit">Subscribe free →</button></form>' +
-      '<div class="nl-inline-success" id="nl-success">✓ Subscribed!</div></div>' +
-      filtered.slice(18).map(buildCard).join('');
-    nlInserted = true;
-  } else {
-    html = filtered.map(buildCard).join('');
-  }
-  grid.innerHTML = html;
-  cnt.innerHTML = 'Showing <strong>' + filtered.length + '</strong> competition' + (filtered.length!==1?'s':'');
-  if (!document.getElementById('suggest-el')) {
-    grid.insertAdjacentHTML('afterend','<div class="suggest-bar" id="suggest-el"><p>Know a competition we've missed? <a href="/submit-competition.html">Submit it →</a></p></div>');
-  }
-}
-
-document.querySelectorAll('.filter-btn[data-type]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn[data-type]').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeType = btn.dataset.type;
-    nlInserted = false;
-    renderComps();
-  });
-});
-document.getElementById('search-input').addEventListener('input', e => {
-  searchTerm = e.target.value.toLowerCase().trim();
-  nlInserted = false;
-  renderComps();
-});
-
-// ── RESOURCES ─────────────────────────────────────────────────────────────────
-function buildResCard(r) {
-  const isFest = r.type === 'festival';
-  const badgeStyle = isFest
-    ? 'background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,.2);'
-    : 'background:var(--primary-light);color:var(--primary);';
-  const cardClass = 'card' + (isFest ? ' resource-festival' : '');
-  const meta = isFest
-    ? (r.city ? '<div class="card-org">' + r.city + (r.when ? ' &nbsp;·&nbsp; ' + r.when : '') + '</div>' : '')
-    : (r.city ? '<div class="card-org">' + r.city + '</div>' : '');
-  const feeNote = r.membershipFrom
-    ? '<span class="deadline-chip">' + r.membershipFrom + '</span>'
-    : '<span class="deadline-chip" style="color:var(--green);">' + (r.free ? 'Free' : 'See website') + '</span>';
-  const linkClass = isFest ? 'card-link res-link' : 'card-link';
-  return '<div class="' + cardClass + '">' +
-    '<div class="card-badges"><span class="badge badge-country">' + (flags[r.country]||'') + ' ' + r.country + '</span>' +
-    '<span class="badge" style="' + badgeStyle + '">' + (resTypeLabels[r.type]||r.type) + '</span></div>' +
-    '<div class="card-title">' + r.name + '</div>' + meta +
-    '<p class="card-desc" style="flex:1;">' + (r.description||'').slice(0,165) + ((r.description||'').length>165?'…':'') + '</p>' +
-    '<div class="card-footer">' + feeNote +
-    '<a class="' + linkClass + '" href="' + r.url + '" target="_blank" rel="noopener">Visit site →</a></div></div>';
-}
-
-function renderRes() {
-  const filtered = allRes.filter(r =>
-    (activeResType === 'all' || r.type === activeResType)
-  );
-  const grid = document.getElementById('res-grid');
-  const cnt  = document.getElementById('res-count');
-  if (!filtered.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-3)">No resources found for this filter.</div>';
-    cnt.innerHTML = 'No results';
-    return;
-  }
-  grid.innerHTML = filtered.map(buildResCard).join('');
-  const fests = filtered.filter(r => r.type === 'festival').length;
-  cnt.innerHTML = 'Showing <strong>' + filtered.length + '</strong> resource' + (filtered.length!==1?'s':'') +
-    (fests ? ' <span style="color:var(--text-3);font-weight:400">incl. ' + fests + ' festival' + (fests!==1?'s':'') + '</span>' : '');
-}
-
-function filterRes(type, btn) {
-  document.querySelectorAll('.res-filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeResType = type;
-  renderRes();
-}
-
-// ── NL SUBSCRIBE ──────────────────────────────────────────────────────────────
-async function handleNL(e) {
+// ── NEWSLETTER ────────────────────────────────────────────────────────────────
+async function handleNL(e, source) {
   e.preventDefault();
-  const email = document.getElementById('nl-email').value;
+  const emailId   = source === 'footer' ? 'footer-nl-email' : 'nl-email';
+  const countryId = source === 'footer' ? 'footer-nl-country' : 'nl-country';
+  const email   = document.getElementById(emailId)?.value;
+  const country = document.getElementById(countryId)?.value || '';
   const btn = e.target.querySelector('button');
-  btn.textContent = '…'; btn.disabled = true;
+  if (btn) { btn.textContent = '…'; btn.disabled = true; }
+  const payload = { email, groups: ['181263296197821532'] };
+  if (country && country !== 'other') payload.fields = { country };
   try {
     await fetch('https://scriptorium.scutt-rmit.workers.dev/', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({email, groups:['181263296197821532']})
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
-  } catch(err) {}
-  document.getElementById('nl-success').style.display = 'block';
-  e.target.style.display = 'none';
-  if (typeof gtag !== 'undefined') gtag('event','generate_lead',{method:'newsletter_landing'});
-}
-
-// ── INIT ──────────────────────────────────────────────────────────────────────
-async function init() {
-  try {
-    const [compRes, resRes] = await Promise.all([
-      fetch(COMP_URL + '?cb=' + Date.now()),
-      fetch(RES_URL  + '?cb=' + Date.now())
-    ]);
-    const compData = await compRes.json();
-    const resData  = await resRes.json();
-    allComps = compData.filter(COMP_FILTER);
-    allRes   = resData.filter(RES_FILTER);
-    const free  = allComps.filter(c => c.entryFeeSort === 0).length;
-    const open  = allComps.filter(isUpcoming).length;
-    const fests = allRes.filter(r => r.type === 'festival').length;
-    document.getElementById('stat-total').textContent    = allComps.length;
-    document.getElementById('stat-free').textContent     = free;
-    document.getElementById('stat-open').textContent     = open;
-    document.getElementById('stat-festivals').textContent = fests;
-    renderComps();
-    renderRes();
-  } catch(err) {
-    document.getElementById('results-count').textContent = 'Could not load data. Please try again.';
-    console.error(err);
+  } catch(err) { console.warn(err); }
+  if (source === 'footer') {
+    document.getElementById('footer-nl-success').style.display = 'block';
+    document.getElementById('footer-nl-form').style.display = 'none';
+  } else {
+    document.getElementById('nl-success').style.display = 'block';
+    e.target.style.display = 'none';
   }
+  if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { method: 'newsletter_' + source });
 }
-init();
 </script>
-
-<script src="/shared.js"></script>
 </body>
 </html>
