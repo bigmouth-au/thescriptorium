@@ -1,64 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Main directory -->
   <url>
     <loc>https://www.thescriptorium.com.au/</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Country landing pages -->
   <url>
     <loc>https://www.thescriptorium.com.au/writing-competitions-australia.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.thescriptorium.com.au/writing-competitions-uk.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.thescriptorium.com.au/writing-competitions-usa.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.thescriptorium.com.au/writing-competitions-canada.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.thescriptorium.com.au/writing-competitions-ireland.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.thescriptorium.com.au/writing-competitions-new-zealand.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Year/topic landing pages -->
   <url>
     <loc>https://www.thescriptorium.com.au/writing-competitions-2026.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.thescriptorium.com.au/writing-courses-melbourne.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://www.thescriptorium.com.au/submit-competition.html</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
