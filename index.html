@@ -344,6 +344,12 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
 .empty-state small { font-size: 0.8rem; color: var(--text-3); }
 
 /* NEWSLETTER CARD */
+
+/* FESTIVAL RESOURCE CARDS */
+.resource-festival::before { background: #1a7a6e !important; }
+.resource-festival:hover { border-color: rgba(26,122,110,0.3) !important; }
+.resource-festival:hover .card-title { color: #1a7a6e !important; }
+
 .newsletter-inline {
   background: var(--bg-dark); border-radius: var(--radius);
   padding: 2rem; grid-column: 1 / -1;
@@ -618,7 +624,6 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
           <button class="sidebar-btn" onclick="setSidebarType('novel-extract', this)">Novel Extract</button>
           <button class="sidebar-btn" onclick="setSidebarType('novel', this)">Complete Novel</button>
           <button class="sidebar-btn" onclick="setSidebarType('screenplay', this)">Screenplay</button>
-          <button class="sidebar-btn" onclick="setSidebarType('festival', this)">Festivals &amp; Events</button>
         </div>
       </div>
 
@@ -741,6 +746,7 @@ select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3p
       <button class="filter-chip" onclick="filterResources('Canada', this)">🇨🇦 Canada</button>
       <button class="filter-chip" onclick="filterResources('New Zealand', this)">🇳🇿 New Zealand</button>
       <button class="filter-chip" onclick="filterResources('Ireland', this)">🇮🇪 Ireland</button>
+      <button class="filter-chip" style="border-color:rgba(26,122,110,0.35);color:#1a7a6e;" onclick="filterResourcesByType('festival', this)">🎪 Festivals &amp; Events</button>
     </div>
     <div class="card-grid" id="resources-grid">
       <p style="color:var(--text-3);font-size:0.875rem;">Loading resources…</p>
@@ -955,7 +961,7 @@ function updateHeaderStats(competitions) {
 // --- CARD ---
 function createCard(comp) {
   const prestigeLabel = { high: 'High Prestige', mid: 'Mid Prestige', low: 'Emerging' };
-  const typeLabels = { 'novel': 'Complete Novel', 'novel-extract': 'Novel Extract', 'short-story': 'Short Story', 'flash': 'Flash Fiction', 'poetry': 'Poetry', 'screenplay': 'Screenplay', 'festival': 'Festival / Event' };
+  const typeLabels = { 'novel': 'Complete Novel', 'novel-extract': 'Novel Extract', 'short-story': 'Short Story', 'flash': 'Flash Fiction', 'poetry': 'Poetry', 'screenplay': 'Screenplay' };
   const flagMap = { UK: '🇬🇧', USA: '🇺🇸', Australia: '🇦🇺', Canada: '🇨🇦', Ireland: '🇮🇪', 'New Zealand': '🇳🇿', International: '🌐' };
 
   const feeDisplay = comp.entryFeeSort === 0
@@ -1202,29 +1208,64 @@ async function handleContact(e) {
 // --- RESOURCES ---
 function renderResources(country) {
   const grid = document.getElementById('resources-grid');
-  const typeLabels = { 'writers-centre': 'Writers Centre', 'association': 'Association', 'training': 'Training' };
+  const typeLabels = { 'writers-centre': 'Writers Centre', 'association': 'Association', 'training': 'Training', 'festival': 'Festival & Event' };
   const flagMap = { UK: '🇬🇧', USA: '🇺🇸', Australia: '🇦🇺', Canada: '🇨🇦', Ireland: '🇮🇪', 'New Zealand': '🇳🇿' };
   const filtered = country ? allResources.filter(r => r.country === country) : allResources;
   if (!filtered.length) { grid.innerHTML = '<p style="color:var(--text-3);font-size:0.875rem;">No resources found.</p>'; return; }
-  grid.innerHTML = filtered.map(r => `
-    <div class="card">
+  grid.innerHTML = filtered.map(r => {
+    const isFest = r.type === 'festival';
+    const badgeStyle = isFest
+      ? 'background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,0.2);'
+      : 'background:var(--primary-light);color:var(--primary);';
+    const cardBefore = isFest
+      ? 'style="--before-bg:#1a7a6e;" class="card resource-card resource-festival"'
+      : 'class="card resource-card"';
+    const meta = isFest
+      ? `<div class="card-org">${r.city || r.country}${r.when ? ' &nbsp;·&nbsp; ' + r.when : ''}</div>`
+      : (r.city ? `<div class="card-org">${r.city}</div>` : '');
+    const feeNote = r.membershipFrom
+      ? `<span class="deadline-chip">${r.membershipFrom}</span>`
+      : `<span class="deadline-chip" style="color:var(--green);">${r.free ? 'Free' : 'See website'}</span>`;
+    return `<div ${cardBefore}>
       <div class="card-badges">
         <span class="badge badge-country">${flagMap[r.country] || ''} ${r.country}</span>
-        <span class="badge badge-prestige-mid">${typeLabels[r.type] || r.type}</span>
+        <span class="badge" style="${badgeStyle}">${typeLabels[r.type] || r.type}</span>
       </div>
       <div class="card-title">${r.name}</div>
-      ${r.location ? `<div class="card-org">${r.location}</div>` : ''}
+      ${meta}
       <p class="card-desc" style="flex:1;">${r.description}</p>
       <div class="card-footer">
-        <span class="deadline-chip">${r.country}</span>
+        ${feeNote}
         <a class="card-link" href="${r.url}" target="_blank" rel="noopener">Visit site →</a>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 function filterResources(country, btn) {
   document.querySelectorAll('#section-resources .filter-chip').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderResources(country);
+}
+function filterResourcesByType(type, btn) {
+  document.querySelectorAll('#section-resources .filter-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const grid = document.getElementById('resources-grid');
+  const typeLabels = { 'writers-centre': 'Writers Centre', 'association': 'Association', 'training': 'Training', 'festival': 'Festival & Event' };
+  const flagMap = { UK: '🇬🇧', USA: '🇺🇸', Australia: '🇦🇺', Canada: '🇨🇦', Ireland: '🇮🇪', 'New Zealand': '🇳🇿' };
+  const filtered = allResources.filter(r => r.type === type);
+  if (!filtered.length) { grid.innerHTML = '<p style="color:var(--text-3);font-size:0.875rem;">No results found.</p>'; return; }
+  grid.innerHTML = filtered.map(r => {
+    const isFest = r.type === 'festival';
+    const badgeStyle = isFest ? 'background:#e8f7f5;color:#1a7a6e;border:1px solid rgba(26,122,110,0.2);' : 'background:var(--primary-light);color:var(--primary);';
+    const meta = isFest ? `<div class="card-org">${r.city || r.country}${r.when ? ' &nbsp;·&nbsp; ' + r.when : ''}</div>` : (r.city ? `<div class="card-org">${r.city}</div>` : '');
+    const feeNote = r.membershipFrom ? `<span class="deadline-chip">${r.membershipFrom}</span>` : `<span class="deadline-chip" style="color:var(--green);">${r.free ? 'Free' : 'See website'}</span>`;
+    return `<div class="card resource-card${isFest ? ' resource-festival' : ''}">
+      <div class="card-badges"><span class="badge badge-country">${flagMap[r.country] || ''} ${r.country}</span><span class="badge" style="${badgeStyle}">${typeLabels[r.type] || r.type}</span></div>
+      <div class="card-title">${r.name}</div>${meta}
+      <p class="card-desc" style="flex:1;">${r.description}</p>
+      <div class="card-footer">${feeNote}<a class="card-link" href="${r.url}" target="_blank" rel="noopener">Visit site →</a></div>
+    </div>`;
+  }).join('');
 }
 
 // --- INIT ---
