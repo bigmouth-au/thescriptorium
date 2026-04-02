@@ -1,0 +1,40 @@
+name: Build Site
+
+# Runs whenever posts.json, competitions.json, or resources.json
+# is pushed to main — regenerates all HTML and commits it back.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - posts.json
+      - competitions.json
+      - resources.json
+
+  # Also allows manual trigger from the Actions tab in GitHub
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run generator
+        run: python3 generate.py
+
+      - name: Commit generated files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: regenerate site [skip ci]"
+          git push
