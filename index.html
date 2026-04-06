@@ -958,6 +958,28 @@ function updateHeaderStats(competitions) {
   document.getElementById('stat-free').textContent = competitions.filter(c => c.entryFeeSort === 0).length;
 }
 
+// --- DEADLINE SORT KEY ---
+function deadlineSortKey(dl) {
+  if (!dl) return 99999999;
+  const s = dl.trim();
+  if (/rolling|varies|see website|publisher/i.test(s)) return 99999999;
+  const mo = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12,
+    january:1,february:2,march:3,april:4,june:6,july:7,august:8,september:9,october:10,november:11,december:12};
+  // "31 May 2026"
+  let m = s.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
+  if (m) { const mn=mo[m[2].toLowerCase()]; if (mn) return +m[3]*10000+mn*100+ +m[1]; }
+  // "May 2026"
+  m = s.match(/^([A-Za-z]+)\s+(\d{4})/);
+  if (m) { const mn=mo[m[1].toLowerCase()]; if (mn) return +m[2]*10000+mn*100+99; }
+  // "31 May annually"
+  m = s.match(/^(\d{1,2})\s+([A-Za-z]+)\s+annually/);
+  if (m) { const mn=mo[m[2].toLowerCase()]; if (mn) return 20260*1000+mn*100+ +m[1]; }
+  // "May annually"
+  m = s.match(/^([A-Za-z]+)\s+annually/);
+  if (m) { const mn=mo[m[1].toLowerCase()]; if (mn) return 2026*10000+mn*100+99; }
+  return 99999999;
+}
+
 // --- CARD ---
 function createCard(comp) {
   const prestigeLabel = { high: 'High Prestige', mid: 'Mid Prestige', low: 'Emerging' };
@@ -987,7 +1009,8 @@ function createCard(comp) {
     data-age="${comp.ageRestriction ? 'restricted' : 'open'}"
     data-gender="${comp.genderRestriction ? 'restricted' : 'open'}"
     data-name="${comp.name.toLowerCase()}" data-desc="${comp.description.toLowerCase()}"
-    data-deadline-month="${comp.deadlineMonth}">
+    data-deadline-month="${comp.deadlineMonth}"
+    data-deadline-sort="${deadlineSortKey(comp.deadline)}">
     <div class="card-badges">
       <span class="badge badge-country">${flagMap[comp.country] || ''} ${comp.country}</span>
       ${intlBadge}
@@ -1102,14 +1125,17 @@ function filterAndSort() {
         case 'fee-high': return parseInt(b.dataset.fee) - parseInt(a.dataset.fee);
         case 'name': return a.dataset.name.localeCompare(b.dataset.name);
         case 'deadline-asc': {
-          const am = parseInt(a.dataset.deadlineMonth), bm = parseInt(b.dataset.deadlineMonth);
-          if (am === 0 && bm === 0) return 0; if (am === 0) return 1; if (bm === 0) return -1;
-          return am - bm;
+          const ak = parseInt(a.dataset.deadlineSort||99999999);
+          const bk = parseInt(b.dataset.deadlineSort||99999999);
+          return ak - bk;
         }
         case 'deadline-desc': {
-          const am = parseInt(a.dataset.deadlineMonth), bm = parseInt(b.dataset.deadlineMonth);
-          if (am === 0 && bm === 0) return 0; if (am === 0) return 1; if (bm === 0) return -1;
-          return bm - am;
+          const ak = parseInt(a.dataset.deadlineSort||99999999);
+          const bk = parseInt(b.dataset.deadlineSort||99999999);
+          if (ak === 99999999 && bk === 99999999) return 0;
+          if (ak === 99999999) return 1;
+          if (bk === 99999999) return -1;
+          return bk - ak;
         }
         default: return 0;
       }
